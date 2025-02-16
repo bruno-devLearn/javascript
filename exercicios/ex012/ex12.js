@@ -2,7 +2,7 @@
 let titulo = document.getElementById("titulo");
 titulo.textContent = "Quiz";
 
-let questao = document.getElementById("questao");
+const questao = document.getElementsByClassName("questao");
 let nQuestao = document.getElementById("nQuestao");
 let pergunta = document.getElementById("pergunta");
 let qtdQuestoes;
@@ -15,7 +15,7 @@ let d = document.getElementById("d");
 let numero = document.getElementById("numero");
 const total = document.getElementById("total");
 
-let resposta;
+let resposta = [];
 
 // coloca o data.json numa variavel
 const url = "data.json";
@@ -76,11 +76,14 @@ let pontos = 0;
 
 // verifica se acrtou e executa um som referente ao estado
 function verificaResposta(data) {
-    if (resposta == data.questoes[index - 1].correta) {
+    if (resposta[index - 1] == data.questoes[index - 1].correta) {
         pontos += 10;
         instrucoes.textContent = `Pontos: ${pontos}`;
         somAcerto.play();
-    } else {
+    } else if (
+        resposta != data.questoes[index - 1].correta &&
+        resposta.length
+    ) {
         somErro.play();
     }
     return pontos;
@@ -89,29 +92,76 @@ function verificaResposta(data) {
 // adiciona eventos de cliques
 a.addEventListener("click", function () {
     if (index < qtdQuestoes) {
-        resposta = "a";
+        resposta[index] = "a";
         pegarDados();
         proximaQuestao();
     }
 });
 b.addEventListener("click", function () {
     if (index < qtdQuestoes) {
-        resposta = "b";
+        resposta[index] = "b";
         pegarDados();
         proximaQuestao();
     }
 });
 c.addEventListener("click", function () {
     if (index < qtdQuestoes) {
-        resposta = "c";
+        resposta[index] = "c";
         pegarDados();
         proximaQuestao();
     }
 });
 d.addEventListener("click", function () {
     if (index < qtdQuestoes) {
-        resposta = "d";
+        resposta[index] = "d";
         pegarDados();
         proximaQuestao();
     }
 });
+
+const result = document.getElementsByClassName("resultado");
+const btn = document.getElementById("btnReiniciar");
+
+function resultado() {
+    let correta = document.getElementsByClassName("resposta-correta");
+    let suaResposta = document.getElementsByClassName("sua-resposta");
+
+    function corretaTXT() {
+        correta[0].textContent = "Resposta correta: b";
+        correta[1].textContent = "Resposta correta: c";
+        correta[2].textContent = "Resposta correta: b";
+        correta[3].textContent = "Resposta correta: d";
+        correta[4].textContent = "Resposta correta: b";
+        correta[5].textContent = "Resposta correta: a";
+        correta[6].textContent = "Resposta correta: b";
+        correta[7].textContent = "Resposta correta: a";
+        correta[8].textContent = "Resposta correta: d";
+        correta[9].textContent = "Resposta correta: c";
+        correta[10].textContent = "Resposta correta: d";
+        correta[11].textContent = "Resposta correta: d";
+    }
+
+    function suaRespostaTXT() {
+        suaResposta[0].textContent = "Sua resposta: " + resposta[1];
+        suaResposta[1].textContent = "Sua resposta: " + resposta[2];
+        suaResposta[2].textContent = "Sua resposta: " + resposta[3];
+        suaResposta[3].textContent = "Sua resposta: " + resposta[4];
+        suaResposta[4].textContent = "Sua resposta: " + resposta[5];
+        suaResposta[5].textContent = "Sua resposta: " + resposta[6];
+        suaResposta[6].textContent = "Sua resposta: " + resposta[7];
+        suaResposta[7].textContent = "Sua resposta: " + resposta[8];
+        suaResposta[8].textContent = "Sua resposta: " + resposta[9];
+        suaResposta[9].textContent = "Sua resposta: " + resposta[10];
+        suaResposta[10].textContent = "Sua resposta: " + resposta[11];
+        suaResposta[11].textContent = "Sua resposta: " + resposta[12];
+    }
+
+    btn.addEventListener("click", function () {
+        location.reload();
+    });
+
+    questao[0].style.display = "none";
+    result[0].style.display = "block";
+    corretaTXT();
+    suaRespostaTXT();
+}

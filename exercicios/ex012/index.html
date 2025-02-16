@@ -1,122 +1,117 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App JS com JSON</title>
-    <!-- CSS externo -->
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-    <main class="tela-principal">
-        <section class="conteudos">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>App JS com JSON</title>
+        <!-- CSS externo -->
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <main class="tela-principal">
+            <section class="conteudos">
+                <h1 id="titulo">App</h1>
 
-            <h1 id='titulo'>App</h1>
-            
-            <article id='instrucoes' class='placar'>
-                Leia a questão e depois clique na resposta
-            </article>
+                <article id="instrucoes" class="placar">
+                    Leia a questão e depois clique na resposta
+                </article>
 
-            <article class="questao">
+                <article class="questao">
+                    <header class="topoQuestao">
+                        <span id="nQuestao">?</span>
+                        <h2 id="pergunta">???</h2>
+                    </header>
 
-                <header class="topoQuestao">
-                    <span id='nQuestao'>?</span>
-                    <h2 id='pergunta'>???</h2>
-                </header>
+                    <div class="corpoQuestao">
+                        <ol class="alternativas">
+                            <li id="a" value="1A" class="letras"></li>
+                            <li id="b" value="1B" class="letras"></li>
+                            <li id="c" value="1C" class="letras"></li>
+                            <li id="d" value="1D" class="letras"></li>
+                        </ol>
+                    </div>
 
-                <div class='corpoQuestao'>
-                    <ol class='alternativas'>
-                        <li id="a" value="1A" class='letras'></li>
-                        <li id="b" value="1B" class='letras'></li>
-                        <li id="c" value="1C" class='letras'></li>
-                        <li id="d" value="1D" class='letras'></li>
-                    </ol>
-                </div>
+                    <footer id="aviso" class="rodapeQuestao centro">
+                        <span id="numero"></span>
+                        de <span id="total"></span>
+                    </footer>
+                </article>
+                <article class="resultado">
+                    <div class="questoes">
+                        <h2>questao 1</h2>
+                        <span class="resposta-correta"></span> <br />
+                        <span class="sua-resposta"></span>
+                    </div>
+                    <div class="questoes">
+                        <h2>questao 2</h2>
+                        <span class="resposta-correta"></span> <br />
+                        <span class="sua-resposta"></span>
+                    </div>
+                    <div class="questoes">
+                        <h2>questao 3</h2>
+                        <span class="resposta-correta"></span> <br />
+                        <span class="sua-resposta"></span>
+                    </div>
+                    <div class="questoes">
+                        <h2>questao 4</h2>
+                        <span class="resposta-correta"></span> <br />
+                        <span class="sua-resposta"></span>
+                    </div>
+                    <div class="questoes">
+                        <h2>questao 5</h2>
+                        <span class="resposta-correta"></span> <br />
+                        <span class="sua-resposta"></span>
+                    </div>
+                    <div class="questoes">
+                        <h2>questao 6</h2>
+                        <span class="resposta-correta"></span> <br />
+                        <span class="sua-resposta"></span>
+                    </div>
+                    <div class="questoes">
+                        <h2>questao 7</h2>
+                        <span class="resposta-correta"></span> <br />
+                        <span class="sua-resposta"></span>
+                    </div>
+                    <div class="questoes">
+                        <h2>questao 8</h2>
+                        <span class="resposta-correta"></span> <br />
+                        <span class="sua-resposta"></span>
+                    </div>
+                    <div class="questoes">
+                        <h2>questao 9</h2>
+                        <span class="resposta-correta"></span> <br />
+                        <span class="sua-resposta"></span>
+                    </div>
+                    <div class="questoes">
+                        <h2>questao 10</h2>
+                        <span class="resposta-correta"></span> <br />
+                        <span class="sua-resposta"></span>
+                    </div>
+                    <div class="questoes">
+                        <h2>questao 11</h2>
+                        <span class="resposta-correta"></span> <br />
+                        <span class="sua-resposta"></span>
+                    </div>
+                    <div class="questoes">
+                        <h2>questao 12</h2>
+                        <span class="resposta-correta"></span> <br />
+                        <span class="sua-resposta"></span>
+                    </div>
 
-                <footer id='aviso' class='rodapeQuestao centro'>
-                        <span id='numero'></span>
-                        de <span id='total'></span>
+                    <button id="btnReiniciar">Reiniciar</button>
+                </article>
+
+                <footer class="centro" id="autoria">
+                    Desenvolvido por Edson Maia &copy; 2021
                 </footer>
+            </section>
+        </main>
 
-            </article>
-            <article class="resultado">
-                <div class="questoes">
-                    <h2>questao 1</h2>
-                    <span class="resposta-correta">teste</span> <br>
-                    <span class="sua-resposta">teste</span>
-                </div>
-                <div class="questoes">
-                    <h2>questao 2</h2>
-                    <span class="resposta-correta"></span> <br>
-                    <span class="sua-resposta"></span>
-                </div>
-                <div class="questoes">
-                    <h2>questao 3</h2>
-                    <span class="resposta-correta"></span> <br>
-                    <span class="sua-resposta"></span>
-                </div>
-                <div class="questoes">
-                    <h2>questao 4</h2>
-                    <span class="resposta-correta"></span> <br>
-                    <span class="sua-resposta"></span>
-                </div>
-                <div class="questoes">
-                    <h2>questao 5</h2>
-                    <span class="resposta-correta"></span> <br>
-                    <span class="sua-resposta"></span>
-                </div>
-                <div class="questoes">
-                    <h2>questao 6</h2>
-                    <span class="resposta-correta"></span> <br>
-                    <span class="sua-resposta"></span>
-                </div>
-                <div class="questoes">
-                    <h2>questao 7</h2>
-                    <span class="resposta-correta"></span> <br>
-                    <span class="sua-resposta"></span>
-                </div>
-                <div class="questoes">
-                    <h2>questao 8</h2>
-                    <span class="resposta-correta"></span> <br>
-                    <span class="sua-resposta"></span>
-                </div>
-                <div class="questoes">
-                    <h2>questao 9</h2>
-                    <span class="resposta-correta"></span> <br>
-                    <span class="sua-resposta"></span>
-                </div>
-                <div class="questoes">
-                    <h2>questao 10</h2>
-                    <span class="resposta-correta"></span> <br>
-                    <span class="sua-resposta"></span>
-                </div>
-                <div class="questoes">
-                    <h2>questao 11</h2>
-                    <span class="resposta-correta"></span> <br>
-                    <span class="sua-resposta"></span>
-                </div>
-                <div class="questoes">
-                    <h2>questao 12</h2>
-                    <span class="resposta-correta"></span> <br>
-                    <span class="sua-resposta"></span>
-                </div>
-
-                <button id='btnReiniciar'>Reiniciar</button>
-            </article>
-
-            <footer class='centro' id='autoria'>
-                Desenvolvido por Edson Maia &copy; 2021
-            </footer>
-        
-        </section>
-
-    </main>
-
-    <audio src="sound/positive.mp3" id='somAcerto'></audio>
-    <audio src="sound/negative.mp3" id='somErro'></audio>
-    <audio src="sound/aplausos.mp3" id='somAplausos'></audio>
-    <!-- JS EXTERNO -->
-    <script src="ex12.js"></script>
-</body>
+        <audio src="sound/positive.mp3" id="somAcerto"></audio>
+        <audio src="sound/negative.mp3" id="somErro"></audio>
+        <audio src="sound/aplausos.mp3" id="somAplausos"></audio>
+        <!-- JS EXTERNO -->
+        <script src="ex12.js"></script>
+    </body>
 </html>
