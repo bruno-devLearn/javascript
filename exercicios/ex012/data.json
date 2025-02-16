@@ -16,7 +16,7 @@
             "alternativaB": "Norte e Sul",
             "alternativaC": "Ocidental e Oriental",
             "alternativaD": "Nordeste e Noroeste",
-            "correta": "Norte e Sul"
+            "correta": "b"
         },
         {
             "numQuestao": 2,
@@ -25,7 +25,7 @@
             "alternativaB": "Leste",
             "alternativaC": "Norte",
             "alternativaD": "Oeste",
-            "correta": "Norte"
+            "correta": "c"
         },
         {
             "numQuestao": 3,
@@ -34,7 +34,7 @@
             "alternativaB": "Brasília",
             "alternativaC": "Salvador",
             "alternativaD": "Lisboa",
-            "correta": "Brasília"
+            "correta": "b"
         },
         {
             "numQuestao": 4,
@@ -43,7 +43,7 @@
             "alternativaB": "Leste",
             "alternativaC": "Norte",
             "alternativaD": "Sul",
-            "correta": "Sul"
+            "correta": "d"
         },
         {
             "numQuestao": 5,
@@ -52,7 +52,7 @@
             "alternativaB": "Norte e Sul",
             "alternativaC": "Verão e Inverno",
             "alternativaD": "Solstícios e Eclipses",
-            "correta": "Norte e Sul"
+            "correta": "b"
         },
         {
             "numQuestao": 6,
@@ -61,7 +61,7 @@
             "alternativaB": "Abaixo do Equador",
             "alternativaC": "Lado que o sol se põe",
             "alternativaD": "Acima do Equador",
-            "correta": "Lado que o sol nasce"
+            "correta": "a"
         },
         {
             "numQuestao": 7,
@@ -70,7 +70,7 @@
             "alternativaB": "Tropical",
             "alternativaC": "Desértico",
             "alternativaD": "Temperado do Norte",
-            "correta": "Tropical"
+            "correta": "b"
         },
         {
             "numQuestao": 8,
@@ -79,7 +79,7 @@
             "alternativaB": "Lado onde o sol nasce",
             "alternativaC": "Abaixo do Equador",
             "alternativaD": "Acima do Equador",
-            "correta": "Lado onde o sol se põe"
+            "correta": "a"
         },
         {
             "numQuestao": 9,
@@ -88,7 +88,7 @@
             "alternativaB": "Europa",
             "alternativaC": "Oceania",
             "alternativaD": "América",
-            "correta": "América"
+            "correta": "d"
         },
         {
             "numQuestao": 10,
@@ -97,7 +97,7 @@
             "alternativaB": "São Luís",
             "alternativaC": "Macapá",
             "alternativaD": "Boa Vista",
-            "correta": "Macapá"
+            "correta": "c"
         },
         {
             "numQuestao": 11,
@@ -106,7 +106,7 @@
             "alternativaB": "2º maior",
             "alternativaC": "4º maior",
             "alternativaD": "5º maior",
-            "correta": "5º maior"
+            "correta": "d"
         },
         {
             "numQuestao": 12,
@@ -115,7 +115,7 @@
             "alternativaB": "400 milhões de hab.",
             "alternativaC": "1 bilhão de hab.",
             "alternativaD": "211 milhões de hab.",
-            "correta": "211 milhões de hab."
+            "correta": "d"
         }
     ]
 }
