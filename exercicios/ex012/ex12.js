@@ -5,6 +5,7 @@ titulo.textContent = "Quiz";
 let questao = document.getElementById("questao");
 let nQuestao = document.getElementById("nQuestao");
 let pergunta = document.getElementById("pergunta");
+let qtdQuestoes = 0;
 
 let a = document.getElementById("a");
 let b = document.getElementById("b");
@@ -24,14 +25,17 @@ function pegarDados() {
             return response.json();
         })
         .then((data) => {
+            qtdQuestoes = data.questoes.length;
+
             exibir(data);
+            return qtdQuestoes;
         });
 }
 
 pegarDados();
 
 // variavel que controla o indice das questoes
-let index = 0;
+let index = 1;
 
 // exibe as questoes na tela
 function exibir(data) {
@@ -46,3 +50,36 @@ function exibir(data) {
     numero.textContent = data.questoes[index].numQuestao;
     total.textContent = 12;
 }
+
+// passa para a proxima questao
+function proximaQuestao() {
+    if (index < qtdQuestoes) {
+        index++;
+        if (index == 13) {
+            resultado();
+        }
+    }
+    pegarDados();
+}
+
+// adiciona eventos de cliques
+a.addEventListener("click", function () {
+    if (index < qtdQuestoes) {
+        proximaQuestao();
+    }
+});
+b.addEventListener("click", function () {
+    if (index < qtdQuestoes) {
+        proximaQuestao();
+    }
+});
+c.addEventListener("click", function () {
+    if (index < qtdQuestoes) {
+        proximaQuestao();
+    }
+});
+d.addEventListener("click", function () {
+    if (index < qtdQuestoes) {
+        proximaQuestao();
+    }
+});
