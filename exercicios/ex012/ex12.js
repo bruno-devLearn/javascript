@@ -70,13 +70,19 @@ function proximaQuestao() {
 const somAcerto = document.getElementById("somAcerto");
 const somErro = document.getElementById("somErro");
 
+// variaveis de pontuação
+let placar = document.getElementById("instrucoes");
 let pontos = 0;
 
+// verifica se acrtou e executa um som referente ao estado
 function verificaResposta(data) {
     if (resposta == data.questoes[index - 1].correta) {
         pontos += 10;
+        instrucoes.textContent = `Pontos: ${pontos}`;
+        somAcerto.play();
+    } else {
+        somErro.play();
     }
-    console.log(pontos);
     return pontos;
 }
 
