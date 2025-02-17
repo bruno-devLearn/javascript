@@ -5,7 +5,7 @@ let hMainText = document.getElementById("h");
 let minMainText = document.getElementById("m");
 let secMainText = document.getElementById("s");
 
-function pegarHoraMain() {
+function pegarDataMain() {
     horaAtual = new Date();
 
     let hMain = horaAtual.getHours();
@@ -29,6 +29,35 @@ function pegarHoraMain() {
         : (secMainText.textContent = secMainStr);
 }
 
+let hSmartText = document.getElementById("hSmart");
+let minSmartText = document.getElementById("mSmart");
+let secSmartText = document.getElementById("sSmart");
+
+function pegarDataSmart() {
+    horaAtual = new Date();
+
+    let hSmart = horaAtual.getHours();
+    let minSmart = horaAtual.getMinutes();
+    let secSmart = horaAtual.getSeconds();
+
+    let hSmartStr = String(hSmart);
+    let minSmartStr = String(minSmart);
+    let secSmartStr = String(secSmart);
+
+    hSmartStr.length == 1
+        ? (hSmartText.textContent = "0" + hSmart)
+        : (hSmartText.textContent = hSmartStr);
+
+    minSmartStr.length == 1
+        ? (minSmartText.textContent = "0" + minSmart)
+        : (minSmartText.textContent = minSmartStr);
+
+    secSmartStr.length == 1
+        ? (secSmartText.textContent = "0" + secSmart)
+        : (secSmartText.textContent = secSmartStr);
+}
+
 setInterval(() => {
-    pegarHoraMain();
+    pegarDataMain();
+    pegarDataSmart();
 }, 1000);
