@@ -41,6 +41,11 @@ section {
     text-align: center;
 }
 
+#relogioDigital span {
+    margin: 0;
+    padding: 0;
+}
+
 #telaSmart {
     font-family: "DM Mono", monospace;
 
@@ -60,6 +65,11 @@ section {
 #relogioSmart {
     user-select: none;
     margin-top: 1rem;
+}
+
+#relogioSmart span {
+    margin: 0;
+    padding: 0;
 }
 
 #hSmart,
