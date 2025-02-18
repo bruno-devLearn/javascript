@@ -1,0 +1,28 @@
+{
+    "jogos": [
+        {
+            "titulo": "Minecraft",
+            "lancamento": 2011,
+            "desenvolvedora": "Mojang",
+            "genero": "Sobrevivencia"
+        },
+        {
+            "titulo": "League of Legends",
+            "lancamento": 2009,
+            "desenvolvedora": "Mojang",
+            "genero": "MOBA"
+        },
+        {
+            "titulo": "Terraria",
+            "lancamento": 2011,
+            "desenvolvedora": "Re-Logic",
+            "genero": "Aventura"
+        },
+        {
+            "titulo": "Red Dead RedempTion 2",
+            "lancamento": 2018,
+            "desenvolvedora": "Rockstar",
+            "genero": "Aventura"
+        }
+    ]
+}
