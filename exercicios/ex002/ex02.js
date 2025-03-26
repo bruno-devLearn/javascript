@@ -21,9 +21,7 @@ let menssageFunct = function status(calculo) {
     if (calculo < 18.5) {
         return (menssage.textContent = "Baixo Peso");
     } else if (calculo < 25) {
-        return (menssage.textContent = "Baixo Normal");
-    } else if (calculo < 26) {
-        return (menssage.textContent = "Baixo Normal");
+        return (menssage.textContent = "Peso Normal");
     } else if (calculo < 30) {
         return (menssage.textContent = "Sobrepeso");
     } else if (calculo < 35) {
