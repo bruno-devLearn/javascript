@@ -71,6 +71,36 @@ function casoMoeda() {
     return result;
 }
 
+let resultadoFormatado = "";
+
+let menssagemFormatada = () => {
+    switch (moedaSelect) {
+        case "dolar":
+            resultadoFormatado = result.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+            });
+            break;
+        case "euro":
+            resultadoFormatado = result.toLocaleString("de-DE", {
+                style: "currency",
+                currency: "EUR",
+            });
+            break;
+
+        case "libra":
+            resultadoFormatado = result.toLocaleString("en-GB", {
+                style: "currency",
+                currency: "GBP",
+            });
+            break;
+        case "bitcoin":
+            resultadoFormatado = result.toFixed(5);
+    }
+
+    return resultadoFormatado;
+};
+
 const message = document.querySelector("#aviso");
 
 function menssagem() {
@@ -85,5 +115,5 @@ function menssagem() {
         " convertido em " +
         moedaSelect +
         " é " +
-        result.toFixed(2);
+        menssagemFormatada();
 }
