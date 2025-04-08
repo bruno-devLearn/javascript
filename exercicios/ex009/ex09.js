@@ -1,29 +1,4 @@
-// =============================================
-// Objetivos:
-// =============================================
-
-// 1. Exibir na tela:
-//    - pegar as perguntas do json --
-//    - Mostrar o número da questão --
-//    - Mostrar a pergunta --
-//    - Mostrar as alternativas --
-
-// 2. Passar para próxima pergunta assim que clicar nas alternativas:
-//    - Verificar se a resposta está correta --
-//    - Se estiver correta, avançar para a próxima --
-//    - Se estiver errada, apenas avançar (ou indicar erro) --
-//    - animação de erro e acerto --
-//    - som de acerto e erro --
-//    - sistema de pontos --
-
-// 3. Ter o fim de jogo:
-//    - Quando acabar as questões, exibir mensagem de fim de jogo
-//    - Ocultar as perguntas e alternativas
-//    - Mostrar pontuação final
-//    - som de aplausos
-//    - reiniciar apos 8 segundos
-// ===========================================
-
+// chama o Json
 const url = "data.json";
 let dataGlobal;
 
@@ -36,6 +11,7 @@ fetch(url)
         showQuestoes(dataGlobal);
     });
 
+// todo DOM para corpo das questoes
 const nQuestionElement = document.querySelector("#nQuestao");
 const questionElement = document.querySelector("#pergunta");
 const A_AlternativaElement = document.querySelector("#a");
@@ -45,8 +21,10 @@ const D_AlternativaElement = document.querySelector("#d");
 const numberElement = document.querySelector("#numero");
 const totalElement = document.querySelector("#total");
 
+// variavel de indice das questoes
 let i = 0;
 
+// mostra as questoes na tela
 function showQuestoes(dataGlobal) {
     nQuestionElement.textContent = dataGlobal.questoes[i].numQuestao;
     questionElement.textContent = dataGlobal.questoes[i].pergunta;
@@ -58,10 +36,12 @@ function showQuestoes(dataGlobal) {
     totalElement.textContent = dataGlobal.questoes.length;
 }
 
+// DOM para acerto ou erro de questoes
 const artQuestoes = document.querySelector(".questao");
 const acertoSound = document.querySelector("#somAcerto");
 const erroSound = document.querySelector("#somErro");
 
+// caso tenha acertado
 function acertou() {
     acertoSound.play();
     artQuestoes.classList.add("acertou");
@@ -70,6 +50,7 @@ function acertou() {
     }, 150);
 }
 
+// caso tenha errado
 function errou() {
     erroSound.play();
     artQuestoes.classList.add("errou");
@@ -78,9 +59,11 @@ function errou() {
     }, 150);
 }
 
+// area de pontuação
 const instructionsElement = document.querySelector("#instrucoes");
 let pontos = 0;
 
+// verifica se o usuario acertou
 function verificarAcerto() {
     if (suaResposta == dataGlobal.questoes[i].correta) {
         acertou();
@@ -91,6 +74,7 @@ function verificarAcerto() {
     instructionsElement.textContent = `Pontos: ${pontos}`;
 }
 
+// passa pra proxima pergunta
 function proximaQuestao() {
     ++i;
     if (i < dataGlobal.questoes.length) {
@@ -100,8 +84,10 @@ function proximaQuestao() {
     }
 }
 
+// guarda a resposta do usuario
 let suaResposta = "";
 
+// adiciona evento de clique pra todas as alternativas
 A_AlternativaElement.addEventListener("click", () => {
     suaResposta = "a";
     verificarAcerto();
@@ -126,8 +112,10 @@ D_AlternativaElement.addEventListener("click", () => {
     proximaQuestao();
 });
 
+// som de aplausos
 const aplausosSound = document.querySelector("#somAplausos");
 
+// define o fim dop jogo
 function fimDoJogo() {
     artQuestoes.style.display = "none";
     aplausosSound.play();
