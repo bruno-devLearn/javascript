@@ -138,24 +138,24 @@ textarea::placeholder {
 }
 
 .fundo1 {
-    background-image: url("../fundos/textura.jpg");
+    background-image: url("./fundos/textura.jpg");
     color: #663300;
     text-shadow: 0 0 5px #fff;
 }
 
 .fundo2 {
-    background-image: url("../fundos/madeira1.jpg");
+    background-image: url("./fundos/madeira1.jpg");
     color: #fff;
 }
 
 .fundo3 {
-    background-image: url("../fundos/metal1.jpg");
+    background-image: url("./fundos/metal1.jpg");
     color: #fff;
     text-shadow: 0 0 5px #111;
 }
 
 .fundo4 {
-    background-image: url("../fundos/bronze1.jpg");
+    background-image: url("./fundos/bronze1.jpg");
     color: #fff;
 }
 
