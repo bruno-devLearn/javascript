@@ -1,13 +1,13 @@
 // onde fica o numero aleatorio
 let randomNumber;
 
-// gera um numero aleatorio
+// gera um numero aleatorio entre 1 e 10
 function gerarNumero() {
     let max = 10;
     let min = 1;
     randomNumber = Math.floor(Math.random() * max) + min;
 
-    console.log(randomNumber);
+    console.log(randomNumber); // mostra o número no console (debug)
     return randomNumber;
 }
 
@@ -17,7 +17,7 @@ window.addEventListener("load", gerarNumero);
 // musica de fundo
 const sound = document.querySelector("#musicaDeFundo");
 
-// logica do btn de musica
+// lógica do botão de música
 function musicBg() {
     if (sound.paused) {
         sound.play();
@@ -27,31 +27,32 @@ function musicBg() {
     }
 }
 
-// bota e evento de clique adicionando a ele
+// botão e evento de clique para música
 const soundBtn = document.querySelector("#btnSom");
 soundBtn.addEventListener("click", musicBg);
 
-// DOM do botao de jogo
+// DOM do botão de jogo
 const sendBtn = document.querySelector("#btnChutar");
 
-// bloqueia o btn
+// bloqueia o botão de chute
 function bloquearBtn() {
-    sendBtn.setAttribute("desibled", "desibled");
+    sendBtn.setAttribute("disabled", "disabled"); // corrigido aqui
     sendBtn.style.backgroundColor = "#ccc";
     sendBtn.style.cursor = "not-allowed";
 }
 
-// ativa o btn
+// ativa o botão de chute
 function ativarBtn() {
-    sendBtn.setAttribute("desibled", false);
+    sendBtn.removeAttribute("disabled"); // corrigido aqui
     sendBtn.style.backgroundColor = "#222";
     sendBtn.style.cursor = "pointer";
 }
 
-// DOM do input e da menssagem
+// DOM do input e da mensagem de aviso
 const input = document.querySelector("#inputNumero");
 const menssageText = document.querySelector("#aviso");
 
+// exibe mensagem temporária e bloqueia o botão
 function flashMenssage(menssage) {
     bloquearBtn();
     menssageText.textContent = menssage;
@@ -64,7 +65,7 @@ function flashMenssage(menssage) {
     }, 3000);
 }
 
-// caso o numero seja invalido da uma flash menssage e bloquei o botao
+// valida se o número digitado é válido
 function numeroValido() {
     const inputValue = parseInt(input.value);
 
@@ -76,7 +77,7 @@ function numeroValido() {
     }
 }
 
-// assim que perder o foco do input executa a função; assim que clicar no input toca a musica
+// eventos do input: valida ao perder o foco e ativa música ao clicar
 input.addEventListener("blur", numeroValido);
 input.addEventListener("click", () => {
     sound.play();
@@ -85,6 +86,7 @@ input.addEventListener("click", () => {
 
 let chute = "";
 
+// lógica do jogo: compara o chute com o número aleatório
 function jogo() {
     const inputValue = input.value;
 
@@ -99,6 +101,7 @@ function jogo() {
     return chute;
 }
 
+// executa ações conforme o resultado do chute
 function jogoSwitch() {
     jogo();
 
@@ -114,11 +117,12 @@ function jogoSwitch() {
         case "certo":
             flashMenssage("Acertou, o número secreto era " + randomNumber);
             menssageText.classList.add("acertou");
-            gerarNumero();
+            gerarNumero(); // gera novo número para próxima rodada
             break;
     }
 }
 
+// evento de clique no botão de chute
 const playBtn = document.querySelector("#btnChutar");
 
 playBtn.addEventListener("click", (e) => {
@@ -130,5 +134,5 @@ playBtn.addEventListener("click", (e) => {
         jogoSwitch();
     }
 
-    e.preventDefault();
+    e.preventDefault(); // previne comportamento padrão do botão
 });
