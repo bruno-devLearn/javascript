@@ -1,5 +1,5 @@
 import { getDados } from "./req.js";
-import { afterLiCreated } from "./aula16.js";
+import { afterLiCreated } from "./ex16.js";
 
 async function get() {
     const dadosGlobais = await getDados();
