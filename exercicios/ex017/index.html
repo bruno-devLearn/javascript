@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <link rel="icon" href="images/favicon.png" />
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Aula 30 de JS</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <main class="tela-principal">
+            <aside id="player1">
+                <p id="la">Latitude <span id="lat1">0</span></p>
+                <p id="lo">Longitude <span id="lon1">0</span></p>
+                <p id="coordenadas"></p>
+            </aside>
+
+            <h1 class="centro">Jogo das Coordenadas Geográficas</h1>
+
+            <div id="jogar">
+                <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input
+                        type="number"
+                        name="latitude"
+                        id="latitude"
+                        min="0"
+                        max="90"
+                        step="5"
+                        required
+                        autofocus
+                    />
+
+                    <select name="ns" id="ns">
+                        <option value="N">N</option>
+                        <option value="S">S</option>
+                    </select>
+
+                    &nbsp;
+
+                    <label for="longitude">Longitude</label>
+
+                    <input
+                        type="number"
+                        name="longitude"
+                        id="longitude"
+                        min="0"
+                        max="180"
+                        step="5"
+                        required
+                    />
+
+                    <select type="text" name="eo" id="eo">
+                        <option value="E">E</option>
+                        <option value="O">O</option>
+                    </select>
+
+                    <button id="btnJogar" onClick="jogada()">Jogar</button>
+                    &nbsp;
+                    <!--
+                <button id='btnZerar' type='reset'>Zerar</button>
+                --></div>
+            </div>
+            <section class="conteudos">
+                <article id="articleMapa">
+                    <img
+                        id="mapa"
+                        src="images/mapa-das-coordenadas.png"
+                        alt="Mapa das Coordenadas"
+                    />
+                    <div class="linha-latitude" data-lat="90N"></div>
+                    <div class="linha-latitude" data-lat="80N"></div>
+                    <div class="linha-latitude" data-lat="70N"></div>
+                    <div class="linha-latitude" data-lat="60N"></div>
+                    <div class="linha-latitude" data-lat="50N"></div>
+                    <div class="linha-latitude" data-lat="40N"></div>
+                    <div class="linha-latitude" data-lat="30N"></div>
+                    <div class="linha-latitude" data-lat="20N"></div>
+                    <div class="linha-latitude" data-lat="10N"></div>
+                    <div class="linha-latitude" data-lat="0"></div>
+                    <div class="linha-latitude" data-lat="10S"></div>
+                    <div class="linha-latitude" data-lat="20S"></div>
+                    <div class="linha-latitude" data-lat="30S"></div>
+                    <div class="linha-latitude" data-lat="40S"></div>
+                    <div class="linha-latitude" data-lat="50S"></div>
+                    <div class="linha-latitude" data-lat="60S"></div>
+                    <div class="linha-latitude" data-lat="70S"></div>
+                    <div class="linha-latitude" data-lat="80S"></div>
+                    <div class="linha-latitude" data-lat="90S"></div>
+                    <!-- Linhas de longitude -->
+                    <div class="linha-longitude" data-lon="180O"></div>
+                    <div class="linha-longitude" data-lon="160O"></div>
+                    <div class="linha-longitude" data-lon="140O"></div>
+                    <div class="linha-longitude" data-lon="120O"></div>
+                    <div class="linha-longitude" data-lon="100O"></div>
+                    <div class="linha-longitude" data-lon="80O"></div>
+                    <div class="linha-longitude" data-lon="60O"></div>
+                    <div class="linha-longitude" data-lon="40O"></div>
+                    <div class="linha-longitude" data-lon="20O"></div>
+                    <div class="linha-longitude" data-lon="0"></div>
+                    <div class="linha-longitude" data-lon="20E"></div>
+                    <div class="linha-longitude" data-lon="40E"></div>
+                    <div class="linha-longitude" data-lon="60E"></div>
+                    <div class="linha-longitude" data-lon="80E"></div>
+                    <div class="linha-longitude" data-lon="100E"></div>
+                    <div class="linha-longitude" data-lon="120E"></div>
+                    <div class="linha-longitude" data-lon="140E"></div>
+                    <div class="linha-longitude" data-lon="160E"></div>
+                    <div class="linha-longitude" data-lon="180E"></div>
+                </article>
+            </section>
+
+            <aside id="placar">
+                <p>Verde <span id="pontosGreen"></span></p>
+                <p>Laranja <span id="pontosOrange"></span></p>
+            </aside>
+
+            <!-- Janela Modal  -->
+            <div id="abrirModal" class="modal">
+                <div>
+                    <a href="#fechar" title="Fechar" class="fechar">x</a>
+                    <p id="coordenadasDaJogada"></p>
+                </div>
+            </div>
+
+            <!-- Janela Modal2  -->
+            <div id="abrirModal2" class="modal">
+                <div>
+                    <a href="#fechar" title="Fechar" class="fechar">x</a>
+                    <p id="aviso"></p>
+                </div>
+            </div>
+        </main>
+        <script src="js/ex17.js"></script>
+    </body>
+</html>
