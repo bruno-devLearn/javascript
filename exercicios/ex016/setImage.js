@@ -27,6 +27,12 @@ function setImageFunct(dadosGlobais) {
             videoClass[i].appendChild(video);
         }
     }
+    const categoriaTitle = document.querySelectorAll(".tituloCategoria");
+
+    for (let x = 0; x < videoClass.length; x++) {
+        categoriaTitle[x].textContent = dadosGlobais.categorias[x].titulo;
+    }
+
     afterLiCreated();
 }
 
