@@ -1,3 +1,5 @@
+import { setShipsPosition } from "./setShips.js";
+
 function setDivs() {
     let index = 90;
     let indexSuplementar = 90;
@@ -56,68 +58,70 @@ function setDivs() {
         index -= 10;
         indexSuplementar -= 10;
     }
+
+    setShipsPosition();
 }
 
 setDivs();
 
 function setPositionLat(divCoords, y) {
     const topPositions = [
-        "0", // 90N
-        "28px", // 80N
-        "74px", // 70N
-        "110px", // 60N
-        "143px", // 50N
-        "172px", // 40N
-        "197px", // 30N
-        "225px", // 20N
-        "253px", // 10N
-        "278px", // 0N
-        "304px", // 10S
-        "332px", // 20S
-        "360px", // 30S
-        "386px", // 40S
-        "414px", // 50S
-        "447px", // 60S
-        "483px", // 70S
-        "530px", // 80S
-        "554px", // 90S
+        -15.5, // 90N
+        12.5, // 80N
+        58.5, // 70N
+        94.5, // 60N
+        127.5, // 50N
+        156.5, // 40N
+        181.5, // 30N
+        209.5, // 20N
+        237.5, // 10N
+        262.5, // 0N
+        288.5, // 10S
+        316.5, // 20S
+        344.5, // 30S
+        370.5, // 40S
+        398.5, // 50S
+        431.5, // 60S
+        467.5, // 70S
+        514.5, // 80S
+        538.5, // 90S
     ];
 
     divCoords.style.position = "absolute";
     divCoords.style.width = "100%";
     divCoords.style.height = "1px";
 
-    divCoords.style.top = topPositions[y];
+    divCoords.style.top = topPositions[y] + "px";
 }
 
 function setPositionLong(coords, x) {
     const long = coords.getAttribute("data-longitude");
 
     const leftPositions = [
-        "0", // -180
-        "48px", // -160
-        "95px", // -140
-        "142px", // -120
-        "190px", // -100
-        "237px", // -80
-        "285px", // -60
-        "333px", // -40
-        "381px", // -20
-        "429px", // 0
-        "476px", // 20
-        "524px", // 40
-        "524px", // 60
-        "571px", // 80
-        "619px", // 100
-        "715px", // 120
-        "762px", // 140
-        "810px", // 160
-        "857px", // 180
+        -6.5, // -180
+        37.5, // -160
+        84.5, // -140
+        131.5, // -120
+        179.5, // -100
+        226.5, // -80
+        274.5, // -60
+        322.5, // -40
+        370.5, // -20
+        418.5, // 0
+        465.5, // 20
+        513.5, // 40
+        513.5, // 60
+        560.5, // 80
+        608.5, // 100
+        704.5, // 120
+        751.5, // 140
+        799.5, // 160
+        846.5, // 180
     ];
 
     coords.style.position = "absolute";
     coords.style.width = "1px";
     coords.style.height = "1px";
 
-    coords.style.left = leftPositions[x];
+    coords.style.left = leftPositions[x] + "px";
 }
