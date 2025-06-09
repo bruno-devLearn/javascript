@@ -1,4 +1,5 @@
 import { setShipsPosition } from "./setShips.js";
+import { getGreenPositions } from "./randonColors.js";
 
 function setDivs() {
     let index = 90;
@@ -30,6 +31,8 @@ function setDivs() {
             coords.setAttribute("data-longitude", longIndex);
             coords.setAttribute("data-latitude", latIndex);
 
+            coords.classList.add("orange");
+
             divCoords.appendChild(coords);
 
             setPositionLat(divCoords, y);
@@ -60,6 +63,7 @@ function setDivs() {
     }
 
     setShipsPosition();
+    getGreenPositions();
 }
 
 setDivs();
