@@ -11,6 +11,10 @@ export function setShipsPosition() {
         img_BlackShips.setAttribute("src", "./images/navio-black.png");
         img_BlackShips.style.width = "25px";
 
+        img_BlackShips.style.position = "relative";
+        img_BlackShips.style.top = "-15.5px";
+        img_BlackShips.style.left = "-6.5px";
+
         divCoords[positions[i]].appendChild(img_BlackShips);
     }
 }

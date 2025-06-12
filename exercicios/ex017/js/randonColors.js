@@ -20,6 +20,4 @@ export function getGreenPositions() {
         divCoords[positions[green[i]]].classList.add("green");
         divCoords[positions[green[i]]].classList.remove("orange");
     }
-
-    // IMPLEMENTED: adicionei class orange a todos, gero 5 posições aleatorias no array de barcos e adiciona a class green e remove a orange dos barcos seleciondos
 }
