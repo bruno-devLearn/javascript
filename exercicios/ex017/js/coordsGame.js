@@ -1,23 +1,17 @@
 import { topPositions, leftPositions } from "./createCoords.js";
+import { getCoords } from "./coordsGame-event.js";
 
 const latInput = document.querySelector("#latitude");
-const longInput = document.querySelector("#longitude");
-
 const latSelect = document.querySelector("#ns");
-const longSelect = document.querySelector("#eo");
+
+latInput.value = "0";
+latSelect.value = "N";
 
 const latDiv = document.querySelector(".latitude");
-const longDiv = document.querySelector(".longitude");
 
-function playFunction() {
+function setLatDivPosition() {
     let lat = String(latInput.value) + String(latSelect.value);
-    let long = String(longInput.value) + String(longSelect.value);
 
-    setLatDivPosition(lat);
-    setLongDivPosition(long);
-}
-
-function setLatDivPosition(lat) {
     let contadorLat = 90;
     let letraLat = "N";
 
@@ -39,9 +33,26 @@ function setLatDivPosition(lat) {
             contadorLat -= 10;
         }
     }
+
+    const latSpan = document.querySelector("#lat1");
+    latSpan.textContent = latInput.value + "°" + latSelect.value;
+
+    if (latInput.value == "0") {
+        latSpan.textContent = "0°";
+    }
 }
 
-function setLongDivPosition(long) {
+const longInput = document.querySelector("#longitude");
+const longSelect = document.querySelector("#eo");
+
+longInput.value = "0";
+longSelect.value = "O";
+
+const longDiv = document.querySelector(".longitude");
+
+function setLongDivPosition() {
+    let long = String(longInput.value) + String(longSelect.value);
+
     let contadorLong = 180;
     let letraLong = "O";
 
@@ -63,7 +74,20 @@ function setLongDivPosition(long) {
             contadorLong -= 20;
         }
     }
+
+    const longSpan = document.querySelector("#lon1");
+    longSpan.textContent = longInput.value + "°" + longSelect.value;
+
+    if (longInput.value == "0") {
+        longSpan.textContent = "0°";
+    }
 }
 
-latInput.addEventListener("input", playFunction);
-longInput.addEventListener("input", playFunction);
+latInput.addEventListener("input", setLatDivPosition);
+longInput.addEventListener("input", setLongDivPosition);
+
+latSelect.addEventListener("change", setLatDivPosition);
+longSelect.addEventListener("change", setLongDivPosition);
+
+const jogarBtn = document.querySelector("#btnJogar");
+jogarBtn.addEventListener("click", getCoords);

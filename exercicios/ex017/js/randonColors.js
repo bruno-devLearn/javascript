@@ -19,5 +19,7 @@ export function getGreenPositions() {
     for (let i = 0; i < green.length; i++) {
         divCoords[positions[green[i]]].classList.add("green");
         divCoords[positions[green[i]]].classList.remove("orange");
+
+        console.log(divCoords[positions[green[i]]]);
     }
 }

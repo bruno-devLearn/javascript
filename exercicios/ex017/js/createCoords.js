@@ -1,5 +1,6 @@
 import { setShipsPosition } from "./setShips.js";
 import { getGreenPositions } from "./randonColors.js";
+import { getDivCoords } from "./coordsGame-event.js";
 
 export const topPositions = [
     0, // 90N
@@ -50,6 +51,7 @@ function setDivs() {
     let indexSuplementar = 90;
 
     let longIndex = -180;
+    let latIndex = 90;
 
     let contador = 1;
     let y = 0;
@@ -76,7 +78,7 @@ function setDivs() {
             const coords = document.createElement("div");
 
             coords.setAttribute("data-longitude", longIndex);
-            coords.setAttribute("data-latitude", indexSuplementar);
+            coords.setAttribute("data-latitude", latIndex);
 
             coords.style.position = "absolute";
             coords.classList.add("orange");
@@ -104,12 +106,16 @@ function setDivs() {
             : (indexSuplementar = indexSuplementar);
 
         y++;
+
         index -= 10;
+
+        latIndex -= 10;
         indexSuplementar -= 10;
     }
 
     setShipsPosition();
     getGreenPositions();
+    getDivCoords();
 }
 
 setDivs();
