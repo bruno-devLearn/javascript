@@ -1,3 +1,5 @@
+import { endGame_win, endGame_lose } from "./end-game.js";
+
 const latInput = document.querySelector("#latitude");
 const latSelect = document.querySelector("#ns");
 
@@ -66,7 +68,7 @@ function start(lat, long) {
 }
 
 const greenPointsText = document.querySelector("#pontosGreen");
-let greenPoints = 0;
+export let greenPoints = 0;
 
 function classGreen(div) {
     const img = div.querySelector("img");
@@ -76,10 +78,12 @@ function classGreen(div) {
 
     greenPoints += 1;
     greenPointsText.textContent = greenPoints;
+
+    endGame_win();
 }
 
 const orangePointsText = document.querySelector("#pontosOrange");
-let orangePoints = 0;
+export let orangePoints = 0;
 
 function classOrange(div) {
     const img = div.querySelector("img");
@@ -89,6 +93,8 @@ function classOrange(div) {
 
     orangePoints += 1;
     orangePointsText.textContent = orangePoints;
+
+    endGame_lose();
 }
 
 const modalDiv = document.querySelector(".modal");
