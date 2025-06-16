@@ -38,6 +38,8 @@ function verificaBarco(div) {
     return shipsStats;
 }
 
+const wanted = document.querySelector("#aviso");
+
 function start(lat, long) {
     divCoords.forEach((div) => {
         const divLat = div.getAttribute("data-latitude");
@@ -51,9 +53,13 @@ function start(lat, long) {
 
                 if (corBarco == "green") {
                     classGreen(div);
+                    modal("verde");
                 } else if (corBarco == "orange") {
                     classOrange(div);
+                    modal("laranja");
                 }
+            } else {
+                wanted.textContent = "clique em um barco";
             }
         }
     });
@@ -85,4 +91,22 @@ function classOrange(div) {
     orangePointsText.textContent = orangePoints;
 }
 
-// TODO: abrir modal caso encontre barcos laranjas, verdes ou clique no que nao seja um barco
+const modalDiv = document.querySelector(".modal");
+const latText = document.querySelector("#longitudeText");
+const longText = document.querySelector("#latitudeText");
+const colorText = document.querySelector("#color");
+
+function modal(barco) {
+    modalDiv.style.display = "block";
+    latText.textContent =
+        "longitude :" + longInput.value + "°" + longSelect.value;
+    longText.textContent =
+        "latitude: " + latInput.value + "°" + latSelect.value;
+    colorText.textContent = "barco: " + barco;
+}
+
+const closeBtn = document.querySelector(".fechar");
+
+closeBtn.addEventListener("click", () => {
+    modalDiv.style.display = "none";
+});

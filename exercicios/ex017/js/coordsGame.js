@@ -9,6 +9,8 @@ latSelect.value = "N";
 
 const latDiv = document.querySelector(".latitude");
 
+const wanted = document.querySelector("#aviso");
+
 function setLatDivPosition() {
     let lat = String(latInput.value) + String(latSelect.value);
 
@@ -32,6 +34,8 @@ function setLatDivPosition() {
         } else {
             contadorLat -= 10;
         }
+
+        wanted.textContent = "";
     }
 
     const latSpan = document.querySelector("#lat1");
@@ -73,6 +77,8 @@ function setLongDivPosition() {
         } else {
             contadorLong -= 20;
         }
+
+        wanted.textContent = "";
     }
 
     const longSpan = document.querySelector("#lon1");
