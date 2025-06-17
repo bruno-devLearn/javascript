@@ -43,8 +43,6 @@ section {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .centro {
@@ -94,6 +92,7 @@ button {
     position: relative;
     width: 928px;
     height: 596px;
+    margin: auto;
 }
 
 #mapa {
@@ -249,4 +248,12 @@ span {
 
 .time {
     display: none;
+}
+
+#rules {
+    width: 279px;
+    display: inline-block;
+    position: absolute;
+    top: 70px;
+    font-size: 16px;
 }
