@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/todolist.css" />
+        <title>To do list</title>
+        <!-- https://github.com/fernandoleonid/mini-projetos-js  -->
+    </head>
+    <body>
+        <main class="todo">
+            <div class="todo__title">Lista de Tarefas</div>
+
+            <div class="todo__new-item" id="newItem">
+                <input
+                    type="text"
+                    placeholder="Digite a tarefa e pressione enter para adicionar"
+                    maxlength="66"
+                    autofocus
+                />
+                <button class="add">+</button>
+            </div>
+            <span class="wanted"></span>
+
+            <div class="todo__list" id="todoList"></div>
+        </main>
+        <script type="module" src="js/storage.js"></script>
+        <script type="module" src="js/create-list.js"></script>
+    </body>
+</html>
