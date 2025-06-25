@@ -165,6 +165,7 @@ h3 {
     width: 100%; /* 930px */
     height: 4px;
     z-index: 1;
+    display: none;
 }
 
 #linhaDeLongitude {
@@ -172,6 +173,7 @@ h3 {
     height: 100%; /* 600px */
     background: rgba(0, 0, 255, 0.5);
     z-index: 1;
+    display: none;
 }
 
 /* DENTRO DA CAIXA */

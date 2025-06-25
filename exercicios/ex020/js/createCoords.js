@@ -1,11 +1,13 @@
+import { buildTrueCoords } from "./shipsPositions.js";
+
 let topPositions = [
-    -2, 25, 72, 108, 140, 170, 195, 223, 250, 276, 302, 330, 358, 384, 413, 445,
-    481, 528, 553,
+    -14.5, 12.5, 59.5, 95.5, 127.5, 157.5, 182.5, 210.5, 237.5, 263.5, 289.5,
+    317.5, 345.5, 371.5, 400.5, 432.5, 468.5, 515.5, 540.5,
 ];
 
 let leftPositions = [
-    0, 48, 96, 143, 191, 238, 286, 334, 381, 430, 477, 525, 572, 620, 668, 715,
-    763, 811, 859,
+    -12.5, 35.5, 83.5, 130.5, 178.5, 225.5, 273.5, 321.5, 368.5, 417.5, 464.5,
+    512.5, 559.5, 607.5, 655.5, 702.5, 750.5, 798.5, 846.5,
 ];
 
 const mapa = document.querySelector(".coords");
@@ -14,10 +16,10 @@ function createCoords() {
     let latIndex = 90;
     let latString = "N";
 
-    let longIndex = 180;
-    let longString = "W";
-
     for (let y = 0; y < topPositions.length; y++) {
+        let longIndex = 180;
+        let longString = "W";
+
         const latLinha = document.createElement("div");
         latLinha.style.width = "100%";
         latLinha.style.height = "4px";
@@ -60,6 +62,8 @@ function createCoords() {
 
         latLinha.setAttribute("data-lat", latIndex + latString);
     }
+
+    buildTrueCoords();
 }
 
 createCoords();
