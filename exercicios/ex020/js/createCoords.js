@@ -1,4 +1,5 @@
 import { buildTrueCoords } from "./shipsPositions.js";
+import { getShips } from "./setShipsClass.js";
 
 let topPositions = [
     -14.5, 12.5, 59.5, 95.5, 127.5, 157.5, 182.5, 210.5, 237.5, 263.5, 289.5,
@@ -64,6 +65,7 @@ function createCoords() {
     }
 
     buildTrueCoords();
+    getShips();
 }
 
 createCoords();

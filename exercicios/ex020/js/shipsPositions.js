@@ -31,7 +31,7 @@ function getShipsPosition(trueCoords) {
     while (shipsPosition.length < 50) {
         const num = Math.floor(Math.random() * (max + 1));
 
-        if (shipsPosition.includes(num) == false) {
+        if (!shipsPosition.includes(num)) {
             shipsPosition.push(num);
         }
     }
