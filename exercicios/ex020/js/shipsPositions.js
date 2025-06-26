@@ -46,6 +46,10 @@ function setShips(trueCoords, shipsPosition) {
         const img = document.createElement("img");
         img.setAttribute("src", blackShips);
         img.style.width = "25px";
+        img.style.position = "absolute";
+        img.style.top = "-4.5px";
+        img.style.left = "-12.5px";
+        img.style.zIndex = "1";
 
         trueCoords[shipsPosition[i]].append(img);
     }

@@ -30,9 +30,9 @@
                             <input
                                 id="latitudeInformada"
                                 type="number"
-                                min="0"
+                                min="-90"
                                 max="90"
-                                step="5"
+                                step="10"
                                 autofocus
                             />
                             <select name="dirLatitude" id="dirLatitude">
@@ -47,9 +47,9 @@
                             <input
                                 id="longitudeInformada"
                                 type="number"
-                                min="0"
+                                min="-180"
                                 max="180"
-                                step="5"
+                                step="20"
                             />
                             <select name="dirLongitude" id="dirLongitude">
                                 <option value="E">E - Leste</option>
@@ -230,4 +230,5 @@
     <script type="module" src="js/createCoords.js"></script>
     <script type="module" src="js/shipsPositions.js"></script>
     <script type="module" src="js/setShipsClass.js"></script>
+    <script type="module" src="js/linesMove-event.js"></script>
 </html>
