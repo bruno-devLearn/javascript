@@ -3,12 +3,12 @@ import { getShips } from "./setShipsClass.js";
 
 export let topPositions = [
     -2, 25, 72, 108, 140, 170, 195, 223, 250, 276, 302, 330, 358, 384, 413, 445,
-    481, 528, 553,
+    481, 528, 556,
 ];
 
 export let leftPositions = [
     0, 48, 96, 143, 191, 238, 286, 334, 381, 430, 477, 525, 572, 620, 668, 715,
-    763, 811, 859,
+    763, 811, 858,
 ];
 
 const mapa = document.querySelector(".coords");

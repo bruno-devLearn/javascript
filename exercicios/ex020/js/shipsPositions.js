@@ -50,6 +50,7 @@ function setShips(trueCoords, shipsPosition) {
         img.style.top = "-4.5px";
         img.style.left = "-12.5px";
         img.style.zIndex = "1";
+        img.style.cursor = "pointer";
 
         trueCoords[shipsPosition[i]].append(img);
     }

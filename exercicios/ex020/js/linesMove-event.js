@@ -15,13 +15,15 @@ let oldValue_lat = parseInt(latInput.value);
 function setLatInput() {
     const currentValue = parseInt(latInput.value);
 
-    if (currentValue > oldValue_lat) {
-        latContador += 10;
-        latIndex--;
-    } else if (currentValue < oldValue_lat) {
-        latContador -= 10;
-        latIndex++;
+    // Corrige o latIndex sempre que necessário
+    let novoIndex = 9 - currentValue / 10;
+    if (novoIndex < 0) novoIndex = 0;
+    if (novoIndex > 18) novoIndex = 18;
+    if (latIndex !== novoIndex) {
+        latIndex = novoIndex;
     }
+
+    latContador = currentValue;
 
     if (latContador > 0) {
         latSelect.value = "N";
@@ -89,3 +91,41 @@ function setLongSelect() {
 
 longInput.addEventListener("input", setLongInput);
 longSelect.addEventListener("change", setLongSelect);
+
+function blockTextY(event) {
+    if (!["ArrowUp", "ArrowDown", "Tab"].includes(event.key)) {
+        event.preventDefault();
+    }
+}
+
+function blockTextX(event) {
+    if (
+        !["ArrowUp", "ArrowDown", "Tab", "ArrowRight", "ArrowLeft"].includes(
+            event.key
+        )
+    ) {
+        event.preventDefault();
+    }
+
+    handleLongInputKey(event);
+}
+
+function handleLongInputKey(event) {
+    let value = parseInt(longInput.value);
+
+    if (event.key === "ArrowLeft") {
+        if (value < 180) {
+            value += 20;
+        }
+    } else if (event.key === "ArrowRight") {
+        if (value > -180) {
+            value -= 20;
+        }
+    }
+
+    longInput.value = value;
+    setLongInput();
+}
+
+latInput.addEventListener("keydown", blockTextY);
+longInput.addEventListener("keydown", blockTextX);
