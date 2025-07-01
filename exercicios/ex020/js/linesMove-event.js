@@ -7,41 +7,49 @@ const latSelect = document.querySelector("#dirLatitude");
 latLinha.style.top = topPositions[9] + "px";
 latInput.value = 0;
 
-let latContador = 0;
+let oldValue_lat = parseInt(latInput.value);
 let latIndex = 9;
 
-let oldValue_lat = parseInt(latInput.value);
+function setLatInput(numb) {
+    let currentValue_lat = parseInt(latInput.value);
+    latIndex = 9;
 
-function setLatInput() {
-    const currentValue = parseInt(latInput.value);
-
-    // Corrige o latIndex sempre que necessário
-    let novoIndex = 9 - currentValue / 10;
-    if (novoIndex < 0) novoIndex = 0;
-    if (novoIndex > 18) novoIndex = 18;
-    if (latIndex !== novoIndex) {
-        latIndex = novoIndex;
+    if (currentValue_lat - oldValue_lat != 0) {
+        if (numb == -10) {
+            currentValue_lat = Math.floor(currentValue_lat / 10) * 10;
+        } else if (numb == 10) {
+            currentValue_lat = Math.ceil(currentValue_lat / 10) * 10;
+        }
+    } else {
+        currentValue_lat += numb;
     }
 
-    latContador = currentValue;
+    latInput.value = currentValue_lat;
 
-    if (latContador > 0) {
+    let numLat = currentValue_lat / 10;
+    latIndex = latIndex - numLat;
+
+    oldValue_lat = currentValue_lat;
+
+    if (currentValue_lat > 0) {
         latSelect.value = "N";
-    } else if (latContador < 0) {
+    } else if (currentValue_lat < 0) {
         latSelect.value = "S";
     }
 
-    oldValue_lat = currentValue;
     latLinha.style.top = topPositions[latIndex] + "px";
 }
 
 function setLatSelect() {
-    latContador = -latContador;
-    oldValue_lat = latContador;
+    const currentValue_lat = parseInt(latInput.value);
+
+    latInput.value = -currentValue_lat;
     latIndex = 18 - latIndex;
 
-    latInput.value = latContador;
+    oldValue_lat = -currentValue_lat;
     latLinha.style.top = topPositions[latIndex] + "px";
+
+    latSelect.blur();
 }
 
 latInput.addEventListener("input", setLatInput);
@@ -54,78 +62,98 @@ const longSelect = document.querySelector("#dirLongitude");
 longLinha.style.left = leftPositions[9] + "px";
 longInput.value = 0;
 
-let longContador = 0;
+let oldValue_long = parseInt(longInput.value);
 let longIndex = 9;
 
-let oldValue_long = parseInt(longInput.value);
+function setLongInput(numb) {
+    let currentValue_long = parseInt(longInput.value);
+    longIndex = 9;
 
-function setLongInput() {
-    const currentValue = parseInt(longInput.value);
-
-    if (currentValue > oldValue_long) {
-        longContador += 20;
-        longIndex--;
-    } else if (currentValue < oldValue_long) {
-        longContador -= 20;
-        longIndex++;
+    if (currentValue_long - oldValue_long != 0) {
+        if (numb == -20) {
+            currentValue_long = Math.floor(currentValue_long / 20) * 20;
+        } else if (numb == 20) {
+            currentValue_long = Math.ceil(currentValue_long / 20) * 20;
+        }
+    } else {
+        currentValue_long += numb;
     }
 
-    if (longContador > 0) {
+    longInput.value = currentValue_long;
+
+    let numLong = currentValue_long / 20;
+    longIndex = longIndex + numLong;
+
+    oldValue_long = currentValue_long;
+
+    if (currentValue_long > 0) {
         longSelect.value = "E";
-    } else if (longContador < 0) {
+    } else if (currentValue_long < 0) {
         longSelect.value = "W";
     }
 
-    oldValue_long = currentValue;
     longLinha.style.left = leftPositions[longIndex] + "px";
 }
 
 function setLongSelect() {
-    longContador = -longContador;
-    oldValue_long = longContador;
+    const currentValue_long = parseInt(longInput.value);
+
+    longInput.value = -currentValue_long;
     longIndex = 18 - longIndex;
 
-    longInput.value = longContador;
+    oldValue_long = -currentValue_long;
     longLinha.style.left = leftPositions[longIndex] + "px";
+
+    longSelect.blur();
 }
 
 longInput.addEventListener("input", setLongInput);
 longSelect.addEventListener("change", setLongSelect);
 
-function blockTextY(event) {
-    if (!["ArrowUp", "ArrowDown", "Tab"].includes(event.key)) {
+function linesKey(event) {
+    const valueLat = parseInt(latInput.value);
+    const valueLong = parseInt(longInput.value);
+
+    if (event.key === "ArrowUp" && valueLat < 90) {
+        setLatInput(10);
+    } else if (event.key == "ArrowDown" && valueLat > -90) {
+        setLatInput(-10);
+    }
+
+    if (event.key == "ArrowLeft" && valueLong > -180) {
+        setLongInput(-20);
+    } else if (event.key == "ArrowRight" && valueLong < 180) {
+        setLongInput(20);
+    }
+}
+
+function blockInput(event) {
+    const allowedKeys = [
+        "Tab",
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "F10",
+        "F11",
+        "F12",
+        "Escape",
+    ];
+
+    if (!allowedKeys.includes(event.key)) {
         event.preventDefault();
     }
 }
 
-function blockTextX(event) {
-    if (
-        !["ArrowUp", "ArrowDown", "Tab", "ArrowRight", "ArrowLeft"].includes(
-            event.key
-        )
-    ) {
-        event.preventDefault();
-    }
-
-    handleLongInputKey(event);
-}
-
-function handleLongInputKey(event) {
-    let value = parseInt(longInput.value);
-
-    if (event.key === "ArrowLeft") {
-        if (value < 180) {
-            value += 20;
-        }
-    } else if (event.key === "ArrowRight") {
-        if (value > -180) {
-            value -= 20;
-        }
-    }
-
-    longInput.value = value;
-    setLongInput();
-}
-
-latInput.addEventListener("keydown", blockTextY);
-longInput.addEventListener("keydown", blockTextX);
+document.addEventListener("keydown", linesKey);
+latInput.addEventListener("keydown", blockInput);
+longInput.addEventListener("keydown", blockInput);
