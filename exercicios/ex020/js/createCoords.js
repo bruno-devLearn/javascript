@@ -1,5 +1,6 @@
 import { buildTrueCoords } from "./shipsPositions.js";
 import { getShips } from "./setShipsClass.js";
+import { addShipEvent } from "./game-event.js";
 
 export let topPositions = [
     -2, 25, 72, 108, 140, 170, 195, 223, 250, 276, 302, 330, 358, 384, 413, 445,
@@ -66,6 +67,7 @@ function createCoords() {
 
     buildTrueCoords();
     getShips();
+    addShipEvent();
 }
 
 createCoords();

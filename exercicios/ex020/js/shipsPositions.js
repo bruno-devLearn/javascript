@@ -47,7 +47,7 @@ function setShips(trueCoords, shipsPosition) {
         img.setAttribute("src", blackShips);
         img.style.width = "25px";
         img.style.position = "absolute";
-        img.style.top = "-4.5px";
+        img.style.top = "-5px";
         img.style.left = "-12.5px";
         img.style.zIndex = "1";
         img.style.cursor = "pointer";

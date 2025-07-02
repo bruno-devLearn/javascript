@@ -8,7 +8,7 @@ export function getShips() {
     });
 
     comercialShips(ships, shipsIndex);
-    miltarShips(ships, shipsIndex);
+    militarShips(ships, shipsIndex);
     turismoShips(ships, shipsIndex);
     pescaShips(ships, shipsIndex);
     piratariaShips(ships, shipsIndex);
@@ -35,7 +35,7 @@ function comercialShips(ships, shipsIndex) {
 
 const miltar = [];
 
-function miltarShips(ships, shipsIndex) {
+function militarShips(ships, shipsIndex) {
     miltar.length = 0;
 
     while (miltar.length < 10) {
@@ -46,7 +46,7 @@ function miltarShips(ships, shipsIndex) {
         if (!miltar.includes(shipIdx)) {
             miltar.push(shipIdx);
 
-            ships[shipIdx].classList.add("miltar");
+            ships[shipIdx].classList.add("militar");
             shipsIndex.splice(num, 1);
         }
     }

@@ -33,7 +33,6 @@
                                 min="-90"
                                 max="90"
                                 step="10"
-                                autofocus
                             />
                             <select name="dirLatitude" id="dirLatitude">
                                 <option value="N">N - Norte</option>
@@ -70,21 +69,85 @@
                     <button class="botao missoes" id="btnMissao3">3</button>
                     <button class="botao missoes" id="btnMissao4">4</button>
                 </div>
-                <h3>Placar <span id="pontos">0</span></h3>
+                <span>Barcos ilegais: <span id="pontosIlegais">0</span></span
+                ><br />
+                <span>Barcos legais: <span id="pontosLegais">0</span></span>
                 <div id="placar">
                     <figure class="iconesPlacar">
-                        <div class="iconePesca" id="4" data-id="4"></div>
-                        <div class="iconePesca" id="14" data-id="14"></div>
-                        <div class="iconePesca" id="27" data-id="27"></div>
-                        <div class="iconePesca" id="38" data-id="38"></div>
-                        <div class="iconePesca" id="49" data-id="49"></div>
+                        <img
+                            class="iconePesca"
+                            src="images/pesca/icon-pesca.png"
+                        />
+                        <img
+                            class="iconePesca"
+                            src="images/pesca/icon-pesca.png"
+                        />
+                        <img
+                            class="iconePesca"
+                            src="images/pesca/icon-pesca.png"
+                        />
+                        <img
+                            class="iconePesca"
+                            src="images/pesca/icon-pesca.png"
+                        />
+                        <img
+                            class="iconePesca"
+                            src="images/pesca/icon-pesca.png"
+                        />
+                        <img
+                            src="images/pesca/icon-pesca.png"
+                            class="iconePesca"
+                        /><img
+                            src="images/pesca/icon-pesca.png"
+                            class="iconePesca"
+                        /><img
+                            src="images/pesca/icon-pesca.png"
+                            class="iconePesca"
+                        /><img
+                            src="images/pesca/icon-pesca.png"
+                            class="iconePesca"
+                        /><img
+                            src="images/pesca/icon-pesca.png"
+                            class="iconePesca"
+                        />
                     </figure>
                     <figure class="iconesPlacar">
-                        <div class="iconePirataria" id="3" data-id="3"></div>
-                        <div class="iconePirataria" id="10" data-id="10"></div>
-                        <div class="iconePirataria" id="18" data-id="18"></div>
-                        <div class="iconePirataria" id="31" data-id="31"></div>
-                        <div class="iconePirataria" id="40" data-id="40"></div>
+                        <img
+                            class="iconePirataria"
+                            src="images/pirataria/icon-pirataria.png"
+                        />
+                        <img
+                            class="iconePirataria"
+                            src="images/pirataria/icon-pirataria.png"
+                        />
+                        <img
+                            class="iconePirataria"
+                            src="images/pirataria/icon-pirataria.png"
+                        />
+                        <img
+                            class="iconePirataria"
+                            src="images/pirataria/icon-pirataria.png"
+                        />
+                        <img
+                            class="iconePirataria"
+                            src="images/pirataria/icon-pirataria.png"
+                        />
+                        <img
+                            src="images/pirataria/icon-pirataria.png"
+                            class="iconePirataria"
+                        /><img
+                            src="images/pirataria/icon-pirataria.png"
+                            class="iconePirataria"
+                        /><img
+                            src="images/pirataria/icon-pirataria.png"
+                            class="iconePirataria"
+                        /><img
+                            src="images/pirataria/icon-pirataria.png"
+                            class="iconePirataria"
+                        /><img
+                            src="images/pirataria/icon-pirataria.png"
+                            class="iconePirataria"
+                        />
                     </figure>
                 </div>
             </aside>
@@ -101,6 +164,7 @@
                     <div class="linhas animarInfo" id="linhaDeLongitude"></div>
                     <div class="coords"></div>
                 </div>
+                <span id="aviso"></span>
             </section>
 
             <article id="divIntrucoes">
@@ -145,83 +209,12 @@
                 <div id="autor">Produzido por Edson Maia &copy; 2021</div>
             </article>
 
-            <!-- Janela Modal  -->
-            <div id="abrirModal" class="modal">
-                <div>
-                    <a href="#fechar" title="Fechar" class="fechar">x</a>
-                    <h3>Coordenada</h3>
-                    <p id="coordenadasDaJogada"></p>
-                </div>
-            </div>
-
-            <!-- MISSAO 1 -->
-            <div id="cardMissao1" class="modal">
-                <div>
-                    <a href="#fechar" title="Fechar" class="fechar">x</a>
-                    <h3>Missão 1 - Green</h3>
-                    <h4>Atlântico e Pacífico Norte</h4>
-                    <p id="textoMissao1">
-                        Em águas do Atlântico Norte e do Pacífico Norte na
-                        direção Oeste existem relatos que tem 4 navios
-                        praticando pirataria e pesca ilegal. <br />
-                        Ajude a localiza-los. Digite as coordenadas Geográficas
-                        para inspecionarmos os navios que estão nestas áreas do
-                        Globo Terrestre.
-                    </p>
-                </div>
-            </div>
-
-            <!-- MISSAO 2 -->
-            <div id="cardMissao2" class="modal">
-                <div>
-                    <a href="#fechar" title="Fechar" class="fechar">x</a>
-                    <h3>Missão 2 - Orange</h3>
-                    <h4>Oceanos e Mares ao Leste e ao Norte</h4>
-                    <p id="texoMissao2">
-                        Nas águas os oceanos e mares no leste e norte da Terra
-                        existem denúncias da existência de dois navios, um
-                        praticando Pesca Ilegal e outro Pirataria. <br />
-                        Ajude a localiza-los. Passe as coordenadas Geográficas
-                        para inspecionarmos os navios que estão nestas áreas do
-                        Globo Terrestre.
-                    </p>
-                </div>
-            </div>
-
-            <!-- MISSAO 3 -->
-            <div id="cardMissao3" class="modal">
-                <div>
-                    <a href="#fechar" title="Fechar" class="fechar">x</a>
-                    <h3>Missão 3 - Gold</h3>
-                    <h4>Atlântico e Pacífico Sul</h4>
-                    <p id="textoMissao3">
-                        Conforme denúncias nas águas os oceanos no Sudoeste
-                        Terra estão dois navios, um praticando Pesca Ilegal e
-                        outro Pirataria. <br />
-                        Ajude a localiza-los. Passe as coordenadas Geográficas
-                        para inspecionarmos os navios que estão nestas áreas do
-                        Globo Terrestre.
-                    </p>
-                </div>
-            </div>
-
-            <!-- MISSAO 4 -->
-            <div id="cardMissao4" class="modal">
-                <div>
-                    <a href="#fechar" title="Fechar" class="fechar">x</a>
-                    <h3>Missão 4 - Purple</h3>
-                    <h4>
-                        Do Atlântico Sul, para o Índico e Pacífico Sul no rumo
-                        leste
-                    </h4>
-                    <p id="cardMissao4">
-                        A inteligência repassou informações sobre a presença de
-                        dois navios, um praticando Pesca Ilegal e outro
-                        Pirataria. <br />
-                        Ajude a localiza-los. Passe as coordenadas Geográficas
-                        para inspecionarmos os navios que estão nestas áreas do
-                        Globo Terrestre.
-                    </p>
+            <!-- Modal base -->
+            <div class="modal" id="modalMissao1">
+                <div class="modal-content">
+                    <h3></h3>
+                    <p></p>
+                    <span></span>
                 </div>
             </div>
         </main>
@@ -232,4 +225,5 @@
     <script type="module" src="js/setShipsClass.js"></script>
     <script type="module" src="js/linesMove-event.js"></script>
     <script type="module" src="js/mouseMove-event.js"></script>
+    <script type="module" src="js/game-event.js"></script>
 </html>

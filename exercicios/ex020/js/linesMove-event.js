@@ -1,4 +1,5 @@
 import { topPositions, leftPositions } from "./createCoords.js";
+import { getInputsValue } from "./game-event.js";
 
 const latLinha = document.querySelector("#linhaDeLatitude");
 const latInput = document.querySelector("#latitudeInformada");
@@ -124,6 +125,10 @@ function linesKey(event) {
         setLongInput(-20);
     } else if (event.key == "ArrowRight" && valueLong < 180) {
         setLongInput(20);
+    }
+
+    if (event.key == "Enter") {
+        getInputsValue();
     }
 }
 
