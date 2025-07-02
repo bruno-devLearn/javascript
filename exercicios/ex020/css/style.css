@@ -365,10 +365,32 @@ button:focus {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
-    align-items: center;
     justify-content: center;
+    align-items: center;
     z-index: 1000;
     display: none;
+}
+
+.modal .close {
+    background-color: #f44336;
+    padding: 15px;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: #00000055;
+    position: absolute;
+    top: -1vw;
+    left: 26vw;
+    border-radius: 50%;
+    z-index: 10;
+    cursor: pointer;
+    display: none;
+}
+
+.modal p {
+    font-size: 1.5rem;
 }
 
 .modal-content {
@@ -377,6 +399,9 @@ button:focus {
     border-radius: 8px;
     max-width: 90%;
     max-height: 90%;
+    width: 400px;
+    position: relative;
+    bottom: 15vh;
 }
 
 .modal-content h3 {

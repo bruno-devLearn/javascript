@@ -105,7 +105,7 @@ function verifyClass(ship, shipClass) {
 const modal = document.querySelector(".modal");
 const modalTitulo = document.querySelector(".modal-content h3");
 const modalTexto = document.querySelector(".modal-content p");
-const modalTime = document.querySelector(".modal-content span");
+const modalTime = document.querySelector(".modal-content h4");
 
 let i = 10;
 
