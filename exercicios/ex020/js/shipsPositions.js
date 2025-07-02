@@ -1,3 +1,4 @@
+// Índices das coordenadas inválidas (não utilizáveis para navios)
 const wrongCoords = [
     5, 6, 7, 8, 23, 24, 25, 26, 27, 29, 31, 38, 39, 40, 41, 42, 43, 44, 45, 46,
     48, 49, 50, 51, 52, 53, 54, 55, 56, 58, 59, 60, 61, 63, 64, 67, 68, 69, 70,
@@ -12,19 +13,26 @@ const wrongCoords = [
     355, 356, 357, 358, 359,
 ];
 
+// Função principal para construir as coordenadas válidas do mapa
 export function buildTrueCoords() {
+    // Seleciona todos os pontos de coordenadas do mapa
     const trueCoords = [...document.querySelectorAll(".coords div div")];
+    // Ordena os índices inválidos em ordem decrescente
     const sortedCoords = [...wrongCoords].sort((a, b) => b - a);
 
+    // Remove as coordenadas inválidas
     for (let i = 0; i < wrongCoords.length; i++) {
         trueCoords.splice(sortedCoords[i], 1);
     }
 
+    // Chama função para sortear posições dos navios
     getShipsPosition(trueCoords);
 }
 
+// Array para armazenar as posições dos navios
 const shipsPosition = [];
 
+// Sorteia 50 posições únicas para os navios
 function getShipsPosition(trueCoords) {
     let max = trueCoords.length - 1;
 
@@ -36,11 +44,14 @@ function getShipsPosition(trueCoords) {
         }
     }
 
+    // Posiciona os navios nas coordenadas sorteadas
     setShips(trueCoords, shipsPosition);
 }
 
+// Caminho da imagem padrão dos navios
 const blackShips = "./images/navios/navio-black.png";
 
+// Insere as imagens dos navios nas posições sorteadas
 function setShips(trueCoords, shipsPosition) {
     for (let i = 0; i < shipsPosition.length; i++) {
         const img = document.createElement("img");

@@ -1,23 +1,29 @@
+// Seletores dos elementos do modal
 const modal = document.querySelector(".modal");
 const modalTitulo = document.querySelector(".modal-content h3");
 const modalH4 = document.querySelector(".modal-content h4");
 const modalTexto = document.querySelector(".modal-content p");
 
+// Seleciona todos os botões de missão
 const missaoBtn = document.querySelectorAll(".missoes");
 
+// Adiciona evento de clique para cada botão de missão
 missaoBtn.forEach((btn, index) => {
     btn.addEventListener("click", () => {
         openModal(index + 1);
     });
 });
 
+// Seleciona o botão de fechar modal
 const closeBtn = document.querySelector(".close");
 
+// Evento para fechar o modal ao clicar no botão de fechar
 closeBtn.addEventListener("click", () => {
     modal.style.display = "none";
     closeBtn.style.display = "none";
 });
 
+// Abre o modal e exibe o conteúdo de acordo com a missão selecionada
 function openModal(index) {
     modal.style.display = "flex";
     closeBtn.style.display = "flex";

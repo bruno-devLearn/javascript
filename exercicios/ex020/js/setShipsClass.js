@@ -1,12 +1,15 @@
+// Função principal para atribuir classes aos navios sorteados
 export function getShips() {
     const ships = document.querySelectorAll(".map div div img");
     const shipsIndex = [];
 
+    // Adiciona data-index a cada navio e armazena os índices
     ships.forEach((element, index) => {
         element.setAttribute("data-index", index);
         shipsIndex.push(index);
     });
 
+    // Distribui os navios entre as categorias
     comercialShips(ships, shipsIndex);
     militarShips(ships, shipsIndex);
     turismoShips(ships, shipsIndex);
@@ -14,8 +17,10 @@ export function getShips() {
     piratariaShips(ships, shipsIndex);
 }
 
+// Array para armazenar índices dos navios comerciais
 const comercial = [];
 
+// Sorteia e define navios comerciais
 function comercialShips(ships, shipsIndex) {
     comercial.length = 0;
 
@@ -33,8 +38,10 @@ function comercialShips(ships, shipsIndex) {
     }
 }
 
+// Array para armazenar índices dos navios militares
 const miltar = [];
 
+// Sorteia e define navios militares
 function militarShips(ships, shipsIndex) {
     miltar.length = 0;
 
@@ -52,8 +59,10 @@ function militarShips(ships, shipsIndex) {
     }
 }
 
+// Array para armazenar índices dos navios de turismo
 const turismo = [];
 
+// Sorteia e define navios de turismo
 function turismoShips(ships, shipsIndex) {
     turismo.length = 0;
 
@@ -71,8 +80,10 @@ function turismoShips(ships, shipsIndex) {
     }
 }
 
+// Array para armazenar índices dos navios de pesca
 const pesca = [];
 
+// Sorteia e define navios de pesca
 function pescaShips(ships, shipsIndex) {
     pesca.length = 0;
 
@@ -90,8 +101,10 @@ function pescaShips(ships, shipsIndex) {
     }
 }
 
+// Array para armazenar índices dos navios de pirataria
 const pirataria = [];
 
+// Sorteia e define navios de pirataria
 function piratariaShips(ships, shipsIndex) {
     pirataria.length = 0;
 

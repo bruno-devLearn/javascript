@@ -1,16 +1,20 @@
+// Importa posições e função de validação dos inputs
 import { topPositions, leftPositions } from "./createCoords.js";
 import { getInputsValue } from "./game-event.js";
 
+// Seletores dos elementos de latitude
 const latLinha = document.querySelector("#linhaDeLatitude");
 const latInput = document.querySelector("#latitudeInformada");
 const latSelect = document.querySelector("#dirLatitude");
 
+// Inicializa linha e input de latitude
 latLinha.style.top = topPositions[9] + "px";
 latInput.value = 0;
 
 let oldValue_lat = parseInt(latInput.value);
 let latIndex = 9;
 
+// Atualiza valor do input de latitude e move a linha
 function setLatInput(numb) {
     let currentValue_lat = parseInt(latInput.value);
     latIndex = 9;
@@ -41,6 +45,7 @@ function setLatInput(numb) {
     latLinha.style.top = topPositions[latIndex] + "px";
 }
 
+// Inverte direção da latitude ao trocar o select
 function setLatSelect() {
     const currentValue_lat = parseInt(latInput.value);
 
@@ -53,19 +58,23 @@ function setLatSelect() {
     latSelect.blur();
 }
 
+// Eventos para input e select de latitude
 latInput.addEventListener("input", setLatInput);
 latSelect.addEventListener("change", setLatSelect);
 
+// Seletores dos elementos de longitude
 const longLinha = document.querySelector("#linhaDeLongitude");
 const longInput = document.querySelector("#longitudeInformada");
 const longSelect = document.querySelector("#dirLongitude");
 
+// Inicializa linha e input de longitude
 longLinha.style.left = leftPositions[9] + "px";
 longInput.value = 0;
 
 let oldValue_long = parseInt(longInput.value);
 let longIndex = 9;
 
+// Atualiza valor do input de longitude e move a linha
 function setLongInput(numb) {
     let currentValue_long = parseInt(longInput.value);
     longIndex = 9;
@@ -96,6 +105,7 @@ function setLongInput(numb) {
     longLinha.style.left = leftPositions[longIndex] + "px";
 }
 
+// Inverte direção da longitude ao trocar o select
 function setLongSelect() {
     const currentValue_long = parseInt(longInput.value);
 
@@ -108,9 +118,11 @@ function setLongSelect() {
     longSelect.blur();
 }
 
+// Eventos para input e select de longitude
 longInput.addEventListener("input", setLongInput);
 longSelect.addEventListener("change", setLongSelect);
 
+// Função para mover linhas com as setas do teclado e Enter
 function linesKey(event) {
     const valueLat = parseInt(latInput.value);
     const valueLong = parseInt(longInput.value);
@@ -132,6 +144,7 @@ function linesKey(event) {
     }
 }
 
+// Bloqueia digitação de caracteres não permitidos nos inputs
 function blockInput(event) {
     const allowedKeys = [
         "Tab",
@@ -159,6 +172,7 @@ function blockInput(event) {
     }
 }
 
+// Eventos globais para navegação e bloqueio de input
 document.addEventListener("keydown", linesKey);
 latInput.addEventListener("keydown", blockInput);
 longInput.addEventListener("keydown", blockInput);

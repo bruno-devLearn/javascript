@@ -1,11 +1,15 @@
+// Importa posições do mapa
 import { topPositions, leftPositions } from "./createCoords.js";
 
+// Seletores dos elementos do mapa e linhas de latitude/longitude
 const mapDiv = document.querySelector(".map");
 const latLinha = document.querySelector("#linhaDeLatitude");
 const longLinha = document.querySelector("#linhaDeLongitude");
 
+// Obtém o retângulo do mapa para calcular posições relativas do mouse
 const rect = mapDiv.getBoundingClientRect();
 
+// Move as linhas de latitude e longitude conforme o mouse
 function getCoordsPosition(event) {
     const y = event.clientY - rect.top;
     const x = event.clientX - rect.left;
@@ -17,6 +21,7 @@ function getCoordsPosition(event) {
     getCoords_x(x);
 }
 
+// Centraliza as linhas e reseta os inputs ao sair do mapa
 function setLinesMidle() {
     latLinha.style.top = topPositions[9] + "px";
     longLinha.style.left = leftPositions[9] + "px";
@@ -25,8 +30,10 @@ function setLinesMidle() {
     longInput.value = 0;
 }
 
+// Variável auxiliar para latitude
 let lat = "";
 
+// Calcula a latitude baseada na posição Y do mouse
 function getCoords_y(y) {
     for (let i = 0; i < topPositions.length - 1; i++) {
         if (y >= topPositions[i] && y < topPositions[i + 1]) {
@@ -41,11 +48,13 @@ function getCoords_y(y) {
     }
 }
 
+// Calcula o delta Y para interpolação da latitude
 function getDeltaY(lat1, y, i) {
     const deltaY = topPositions[i + 1] - topPositions[i];
     setLatitudeInput(deltaY, lat1, y, i);
 }
 
+// Atualiza o input de latitude conforme o mouse
 function setLatitudeInput(deltaY, lat1, y, i) {
     const degreesY = ((y - topPositions[i]) / deltaY) * 10;
     latInput.value = parseInt(lat1 - parseInt(degreesY));
@@ -57,11 +66,14 @@ function setLatitudeInput(deltaY, lat1, y, i) {
     }
 }
 
+// Seletores dos inputs de latitude
 const latInput = document.querySelector("#latitudeInformada");
 const latSelect = document.querySelector("#dirLatitude");
 
+// Variável auxiliar para longitude
 let long = "";
 
+// Calcula a longitude baseada na posição X do mouse
 function getCoords_x(x) {
     for (let i = 0; i < topPositions.length - 1; i++) {
         if (x >= leftPositions[i] && x < leftPositions[i + 1]) {
@@ -76,11 +88,13 @@ function getCoords_x(x) {
     }
 }
 
+// Calcula o delta X para interpolação da longitude
 function getDeltaX(long1, x, i) {
     const deltaX = leftPositions[i + 1] - leftPositions[i];
     setLongitudeInput(deltaX, long1, x, i);
 }
 
+// Atualiza o input de longitude conforme o mouse
 function setLongitudeInput(deltaX, long1, x, i) {
     const degreesX = ((x - leftPositions[i]) / deltaX) * 20;
     longInput.value = parseInt(long1 + parseInt(degreesX));
@@ -92,8 +106,10 @@ function setLongitudeInput(deltaX, long1, x, i) {
     }
 }
 
+// Seletores dos inputs de longitude
 const longInput = document.querySelector("#longitudeInformada");
 const longSelect = document.querySelector("#dirLongitude");
 
+// Eventos para movimentação do mouse no mapa
 mapDiv.addEventListener("mousemove", getCoordsPosition);
 mapDiv.addEventListener("mouseleave", setLinesMidle);
