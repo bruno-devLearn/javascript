@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700&display=swap');
 
-:root {
+:root{
     --primary-color: #1a237e;
     --secundary-color: #3f51b5;
-    --shadow-color: #ccc;
-    --text-color: #fff;
+    --shadow-color: #CCC;
+    --text-color: #FFF;
 }
 
 /* Seletor Global */
@@ -12,7 +12,7 @@
     margin: 0; /* margem */
     padding: 0; /* espacamento */
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1rem;
 }
 
@@ -86,8 +86,7 @@ input::-webkit-input-placeholder {
     font-size: 0.65rem;
 }
 
-input::placeholder,
-input::-moz-placeholder {
+input::placeholder, input::-moz-placeholder {
     font-size: 0.65rem;
 }
 
@@ -171,19 +170,17 @@ th {
     background: #8c9eff;
 }
 
-th,
-tr,
-td {
+th, tr, td {
     border: 1px solid #ececec;
     height: 2rem;
     padding: 0.5rem;
     text-align: center;
 }
 
-@media (max-width: 480px) {
+@media (max-width:480px) {
     section {
         width: 100%;
-    }
+    }   
 }
 
 /* Mensagens */
@@ -209,7 +206,7 @@ td {
 }
 
 .alert-warning {
-    background-color: #ff5722;
+    background-color:#ff5722;
 }
 
 .formApagarEditar {
@@ -226,10 +223,10 @@ td {
 
 /* janela modal */
 
-.modal {
+.modal{
     position: fixed;
-    top: 0;
-    left: 0;
+    top:0;
+    left:0;
     width: 100%;
     height: 100%;
     background: #00000090;
@@ -237,15 +234,15 @@ td {
     z-index: -1;
 }
 
-.modal.active {
+.modal.active{
     opacity: 1;
     z-index: 1;
 }
 
-.modal-content {
+.modal-content{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap:20px;
     width: 60vw;
     margin: 15vh auto;
     padding-bottom: 20px;
@@ -254,7 +251,7 @@ td {
     border-radius: 8px;
 }
 
-.modal-header {
+.modal-header{
     display: flex;
     position: relative;
     justify-content: center;
@@ -263,7 +260,7 @@ td {
     font-size: 1rem;
 }
 
-.modal-close {
+.modal-close{
     position: absolute;
     right: 0;
     display: block;
@@ -275,29 +272,29 @@ td {
     border-radius: 8px;
 }
 
-.modal-close:hover {
-    background-color: #ff4949;
+.modal-close:hover{
+    background-color: #FF4949;
     color: white;
 }
 
-.modal-footer {
+.modal-footer{
     background-color: inherit;
     text-align: right;
     padding: 0 20px;
 }
 
-@media (max-width: 480px) {
-    .modal {
-        top: 100%;
+@media (max-width:480px){
+    .modal{
+        top:100%;
         transition: all 1s ease;
     }
-    .modal.active {
-        top: 0;
+    .modal.active{
+        top:0;
     }
-    .modal-content {
+    .modal-content{
         margin: 25% auto;
         width: 95%;
-        position: fixed;
+        position:fixed;
     }
 }
 

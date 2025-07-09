@@ -1,98 +1,87 @@
-// programa principal
-// POO = PROGRAMAÇÃO ORIENTADA A OBJETOS
+import { PessoaController } from './api/controllers/PessoaController.js'
+import { ModalHelper } from './api/helpers/ModalHelper.js'
 
-// classes = modelos ou moldes de objetos
-// objetos = sao abstrações ou representações de 'coisas' que existem no mundo
-// objeto = instancia ou objeto do tipo | objeto é um tipo de dados
+const pessoaController = new PessoaController()
 
-class Pessoa {
-    static totalPessoas = 0;
+// CONTROLAR ENVIO DO FORMULARIO E EXIBICAO NA TABELA
+const formulario = document.querySelector('#formulario')
 
-    // metodos = funções ou comportamentos
-    constructor(nome, idade, peso, altura) {
-        this.nome = nome;
-        this.idade = idade;
-        this.peso = peso;
-        this.altura = altura;
-        this.imc = this.calculaIMC(this.peso, this.altura);
-        this.classificacaoIMC = this.classificacaoIMC(this.imc);
-        Pessoa.totalPessoas += 1;
+// escutador de evento no formulario
+formulario.addEventListener('submit', (event) => {
+    
+    // adicionar pessoa
+    pessoaController.adiciona(event)
+    
+    ModalHelper.ocultarBotoes()
+    ModalHelper.modal('Cadastro', 'Pessoa cadastrada ou atualizada!')
+    
+    // limpar formulario
+    pessoaController._limpaFormulario()
+
+})
+
+////// formulario formApagar
+const formApagarEditar = document.querySelector('#formApagarEditar')
+const btnApagar = document.querySelector('#btnApagar')
+const btnEditar = document.querySelector('#btnEditar')
+
+formApagarEditar.addEventListener('submit', (event) => {
+    event.preventDefault()
+})
+
+btnApagar.addEventListener('click', () => {
+    //console.log('Apagar')
+
+    let id = document.querySelector('#id').value
+    console.log('Apagar registro ' + id)
+
+    document.querySelector('#id').value = null
+
+    ////// INTERACOES COM A JANELA MODAL //////
+    ModalHelper.mostrarBotoes()
+    // abrir janela modal - titulo, mensagem
+    ModalHelper.modal('Apagar registro', `Deseja apagar o registro ${id} ?`)
+
+    // se cliar no botao sim
+    document.querySelector('#sim').addEventListener('click', () => {
+        pessoaController.apaga(id)
+        id = null // apagar o id IMPORTANTE!!!
+        ModalHelper.closeModal()
+        
+    })
+    ////// INTERACOES COM A JANELA MODAL //////
+
+})
+
+btnEditar.addEventListener('click', () => {
+    //console.log('Editar')
+
+    // rolar pagina para cima
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    })
+
+    document.querySelector('#nome').focus()
+
+    let id = document.querySelector('#id').value
+    console.log('Editar registro ' + id)
+
+    document.querySelector('#idPessoa').value = id
+    document.querySelector('#id').value = null
+
+    let pessoa = pessoaController.buscaPorId(id)
+    //console.log(pessoa)
+
+    if(pessoa) {
+        let { _nome, _idade, _peso, _altura } = pessoa
+        // preencher o formulario com os dados
+        pessoaController.preencheFormulario(_nome, _idade, _peso, _altura)
     }
 
-    calculaIMC(peso, altura) {
-        const imc = peso / (altura * altura);
-        return parseFloat(imc.toFixed(1));
-    }
+})
 
-    classificacaoIMC(imc) {
-        if (imc >= 40) {
-            return "Obesidade III";
-        } else if (imc >= 35) {
-            return "Obesidade II";
-        } else if (imc >= 30) {
-            return "Obesidade I";
-        } else if (imc >= 25) {
-            return "Sobrepeso";
-        } else if (imc >= 18.5) {
-            return "Peso Normal";
-        } else if (imc < 18.5) {
-            return "Abaixo do Peso";
-        }
-    }
+////// formulario formApagar
 
-    // get = pegar
-    get Nome() {
-        return this.nome;
-    }
-
-    get Idade() {
-        return this.idade;
-    }
-
-    get Peso() {
-        return this.peso;
-    }
-
-    get Altura() {
-        return this.altura;
-    }
-
-    get totalPessoas() {
-        return Pessoa.totalPessoas;
-    }
-
-    //set = setar;
-    set Nome(novoNome) {
-        this.nome = novoNome;
-    }
-
-    set Idade(novaIdade) {
-        this.idade = novaIdade;
-    }
-
-    set Peso(novoPeso) {
-        this.peso = novoPeso;
-    }
-
-    set Altura(novaAltura) {
-        this.altura = novaAltura;
-    }
-}
-
-// criar novo objeto a partir da class, instanciar
-
-let pessoa1 = new Pessoa("Bruno", 17, 55.3, 1.5);
-let pessoa2 = new Pessoa("Maria", 66, 70.3, 1.66);
-let pessoa3 = new Pessoa("Ana", 20, 42.3, 1.41);
-let pessoa4 = new Pessoa("Bia", 50, 98.7, 1.52);
-
-console.log(pessoa1);
-console.log(pessoa2);
-console.log(pessoa3);
-console.log(pessoa4);
-
-console.log(pessoa1.nome);
-pessoa1.nome = "bruno queiroz";
-console.log(pessoa1.nome);
-
-console.log(Pessoa.totalPessoas);
+ModalHelper.fecharJanela()
