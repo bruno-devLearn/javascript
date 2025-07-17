@@ -1,7 +1,7 @@
+import { pessoas } from "../controllers/database.js";
+
 // Classe que representa uma pessoa e calcula seu IMC e classificação
 export default class Pessoa {
-    static #contador = Number(localStorage.getItem("contador") || 0);
-
     // Propriedades privadas
     #id;
     #nome;
@@ -13,8 +13,7 @@ export default class Pessoa {
 
     // Construtor inicializa os atributos e calcula IMC e classificação
     constructor(nome, idade, peso, altura) {
-        this.#id = Pessoa.#contador++;
-        localStorage.setItem("contador", Pessoa.#contador);
+        this.#id = pessoas.length;
         this.#nome = nome;
         this.#idade = idade;
         this.#peso = peso;

@@ -3,9 +3,6 @@ import { setData, pessoas } from "./database.js";
 import { registerModal, existente } from "../views/modal.js";
 import { buildTable } from "../views/table.js";
 
-// TODO: retirar apos concluido
-localStorage.clear();
-
 // Seleciona o formulário pelo id
 const form = document.querySelector("#formulario");
 
