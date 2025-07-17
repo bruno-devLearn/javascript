@@ -1,6 +1,6 @@
 import Pessoa from "../models/Pessoa.js";
 import { setData, pessoas } from "./database.js";
-import { registerModal } from "../views/modal.js";
+import { registerModal, existente } from "../views/modal.js";
 import { buildTable } from "../views/table.js";
 
 // TODO: retirar apos concluido
@@ -34,8 +34,16 @@ function getValues() {
     let peso = pesoInput.value;
     let altura = alturaInput.value;
 
-    // Capitaliza a primeira letra do nome
-    nome = nome.charAt(0).toUpperCase() + nome.slice(1);
+    // Formata nome completo: limpa espaços extras e capitaliza cada palavra
+    nome = nome
+        .trim()
+        .replace(/\s+/g, " ")
+        .split(" ")
+        .map(
+            (palavra) =>
+                palavra.charAt(0).toUpperCase() + palavra.slice(1).toLowerCase()
+        )
+        .join(" ");
 
     // troca a virgula por ponto
     altura = altura.replace(",", ".");
@@ -64,19 +72,27 @@ function criarPessoa(nome, idade, peso, altura) {
     ) {
         const pessoa = new Pessoa(nome, idade, peso, altura);
 
-        pessoas.push({
-            id: pessoa.id,
-            nome: pessoa.nome,
-            idade: pessoa.idade,
-            peso: pessoa.peso,
-            altura: pessoa.altura,
-            imc: pessoa.imc,
-            classificacao: pessoa.classificacao,
-        });
+        // Verifica se já existe uma pessoa com o mesmo nome
+        const existe = pessoas.some((p) => p.nome === pessoa.nome);
 
-        buildTable();
-        setData(pessoas);
-        registerModal();
+        // caso nao exista salva no localStorage, se nao abre um modal de erro
+        if (!existe) {
+            pessoas.push({
+                id: pessoa.id,
+                nome: pessoa.nome,
+                idade: pessoa.idade,
+                peso: pessoa.peso,
+                altura: pessoa.altura,
+                imc: pessoa.imc,
+                classificacao: pessoa.classificacao,
+            });
+
+            buildTable();
+            setData(pessoas);
+            registerModal();
+        } else {
+            existente();
+        }
 
         console.log(pessoas);
     }
