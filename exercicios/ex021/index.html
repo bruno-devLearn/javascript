@@ -33,10 +33,10 @@
                         <input
                             type="text"
                             name="nome"
-                            id="nome"
-                            placeholder="Nome"
-                            autofocus
                             required
+                            pattern="^[A-Za-zÀ-ÿ\s]+$"
+                            title="Apenas letras e espaços são permitidos."
+                            id="nome"
                         />
                     </div>
 
@@ -78,15 +78,14 @@
                             >Altura <span class="detalhes">*</span></label
                         >
                         <input
-                            type="number"
+                            type="text"
                             name="altura"
                             id="altura"
-                            min="0.30"
-                            max="3.00"
-                            step="0.01"
-                            placeholder="Altura"
                             required
+                            pattern="^(?:[1-9]\d?|[12]\d{2}|300|[0-2](?:\.\d{1,2})?|3\.0{1,2})$"
+                            title="Digite uma altura válida: número inteiro até 300 (ex: 170) ou decimal até 3.00 (ex: 1.75)"
                         />
+
                         <!-- 0.47 metros a 3 metros -->
                     </div>
 
@@ -181,4 +180,5 @@
             </section>
         </main>
     </body>
+    <script type="module" src="js/controllers/controller.js"></script>
 </html>

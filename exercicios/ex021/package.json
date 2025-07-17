@@ -1,0 +1,20 @@
+{
+    "name": "calculadora-imc",
+    "version": "1.0.0",
+    "description": "calculadora imc usando localStorage + POO",
+    "main": "./js/controllers/controller.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bruno-devLearn/javascript.git"
+    },
+    "author": "bruno-devbr",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/bruno-devLearn/javascript/issues"
+    },
+    "homepage": "https://github.com/bruno-devLearn/javascript#readme",
+    "type": "module"
+}
