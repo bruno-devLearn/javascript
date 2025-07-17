@@ -1,5 +1,7 @@
 import Pessoa from "../models/Pessoa.js";
 import { setData, pessoas } from "./database.js";
+import { registerModal } from "../views/modal.js";
+import { buildTable } from "../views/table.js";
 
 // TODO: retirar apos concluido
 localStorage.clear();
@@ -72,7 +74,10 @@ function criarPessoa(nome, idade, peso, altura) {
             classificacao: pessoa.classificacao,
         });
 
+        buildTable();
         setData(pessoas);
+        registerModal();
+
         console.log(pessoas);
     }
 }
