@@ -1,3 +1,9 @@
+import Pessoa from "../models/Pessoa.js";
+import { setData, pessoas } from "./database.js";
+
+// TODO: retirar apos concluido
+localStorage.clear();
+
 // Seleciona o formulário pelo id
 const form = document.querySelector("#formulario");
 
@@ -29,6 +35,9 @@ function getValues() {
     // Capitaliza a primeira letra do nome
     nome = nome.charAt(0).toUpperCase() + nome.slice(1);
 
+    // troca a virgula por ponto
+    altura = altura.replace(",", ".");
+
     // Ajusta altura para formato decimal se necessário
     if (!altura.includes(".")) {
         while (altura.length < 3) {
@@ -51,7 +60,20 @@ function criarPessoa(nome, idade, peso, altura) {
         validarAltura(altura) && // Valida altura
         !verificarCampos(nome, idade, peso, altura) // Verifica se há campos vazios
     ) {
-        // TODO: criar a pessoa
+        const pessoa = new Pessoa(nome, idade, peso, altura);
+
+        pessoas.push({
+            id: pessoa.id,
+            nome: pessoa.nome,
+            idade: pessoa.idade,
+            peso: pessoa.peso,
+            altura: pessoa.altura,
+            imc: pessoa.imc,
+            classificacao: pessoa.classificacao,
+        });
+
+        setData(pessoas);
+        console.log(pessoas);
     }
 }
 

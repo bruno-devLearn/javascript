@@ -1,6 +1,9 @@
 // Classe que representa uma pessoa e calcula seu IMC e classificação
-export class Pessoa {
+export default class Pessoa {
+    static #contador = 0; // contador privado
+
     // Propriedades privadas
+    #id;
     #nome;
     #idade;
     #peso;
@@ -10,6 +13,7 @@ export class Pessoa {
 
     // Construtor inicializa os atributos e calcula IMC e classificação
     constructor(nome, idade, peso, altura) {
+        this.#id = Pessoa.#contador++;
         this.#nome = nome;
         this.#idade = idade;
         this.#peso = peso;
@@ -20,7 +24,7 @@ export class Pessoa {
 
     // Método para calcular o IMC
     calculaIMC(peso, altura) {
-        return peso / (altura * altura);
+        return (peso / (altura * altura)).toFixed(1);
     }
 
     // Método para classificar o IMC conforme faixas
@@ -41,6 +45,10 @@ export class Pessoa {
     }
 
     // Getters para acessar os atributos privados
+    get id() {
+        return this.#id;
+    }
+
     get nome() {
         return this.#nome;
     }
