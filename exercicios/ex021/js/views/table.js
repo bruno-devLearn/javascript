@@ -12,37 +12,36 @@ export function buildTable() {
         // Limpa o conteúdo atual do tbody
         tbodyTag.innerHTML = "";
 
+        // Exibe a div de dados
+        divData.style.display = "block";
+
         // Para cada pessoa, cria uma linha na tabela
         pessoas.forEach((pessoa) => {
-            // Exibe a div de dados
-            divData.style.display = "block";
-            // Cria uma nova linha da tabela
             const tr = document.createElement("tr");
 
-            // Define as chaves que serão exibidas na tabela
-            const chaves = [
-                "id",
-                "nome",
-                "idade",
-                "peso",
-                "altura",
-                "imc",
-                "classificacao",
+            // Puxa os dados via getters (seguro com atributos privados)
+            const dados = [
+                pessoa.id,
+                pessoa.nome,
+                pessoa.idade,
+                pessoa.peso,
+                pessoa.altura,
+                pessoa.imc,
+                pessoa.classificacao,
             ];
 
-            // Seleciona os valores da pessoa conforme as chaves
-            const selecionados = chaves.map((c) => pessoa[c]);
-
-            // Para cada valor, cria uma célula na linha
-            for (let i = 0; i < chaves.length; i++) {
+            // Cria uma célula para cada dado
+            dados.forEach((valor) => {
                 const td = document.createElement("td");
-                td.innerHTML = selecionados[i];
+                td.innerHTML = valor;
                 tr.appendChild(td);
-            }
+            });
 
-            // Adiciona a linha ao tbody da tabela
             tbodyTag.appendChild(tr);
         });
+    } else {
+        // Se não há pessoas, esconde a div
+        divData.style.display = "none";
     }
 }
 

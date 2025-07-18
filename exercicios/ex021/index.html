@@ -37,6 +37,7 @@
                             pattern="^[A-Za-zÀ-ÿ\s]+$"
                             title="Apenas letras e espaços são permitidos."
                             id="nome"
+                            placeholder="Nome"
                         />
                     </div>
 
@@ -82,8 +83,9 @@
                             name="altura"
                             id="altura"
                             required
-                            pattern="^(?:[1-9]\d?|[12]\d{2}|300|[0-2](?:[.,]\d{1,2})?|3[.,]0{1,2})$"
+                            pattern="([1-2]\d{2}|300)|((0\.(4[7-9]|[5-9]\d))|([1-2](?:[.,]\d{1,2})?)|(3[.,]0{1,2}))"
                             title="Digite uma altura válida: número inteiro até 300 (ex: 170) ou decimal até 3.00 (ex: 1.75)"
+                            placeholder="Altura"
                         />
 
                         <!-- 0.47 metros a 3 metros -->
@@ -185,4 +187,5 @@
     <script type="module" src="js/views/modal.js"></script>
     <script type="module" src="js/views/table.js"></script>
     <script type="module" src="js/controllers/delete.js"></script>
+    <script type="module" src="js/controllers/edit.js"></script>
 </html>

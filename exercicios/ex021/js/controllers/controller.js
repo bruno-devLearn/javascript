@@ -2,6 +2,7 @@ import Pessoa from "../models/Pessoa.js";
 import { setData, pessoas } from "./database.js";
 import { registerModal, existente } from "../views/modal.js";
 import { buildTable } from "../views/table.js";
+import { edit } from "./edit.js";
 
 // Seleciona o formulário pelo id
 const form = document.querySelector("#formulario");
@@ -19,13 +20,21 @@ form.addEventListener("submit", function (event) {
 });
 
 // Seleciona os inputs pelo id
+const idInput = document.querySelector("#idPessoa");
 const nomeInput = document.querySelector("#nome");
 const idadeInput = document.querySelector("#idade");
 const pesoInput = document.querySelector("#peso");
 const alturaInput = document.querySelector("#altura");
 
+idInput.value = "";
+nomeInput.value = "";
+idadeInput.value = "";
+pesoInput.value = "";
+alturaInput.value = "";
+
 // Função para capturar e tratar os valores dos inputs
 function getValues() {
+    let id = idInput.value;
     let nome = nomeInput.value;
     let idade = idadeInput.value;
     let peso = pesoInput.value;
@@ -55,11 +64,11 @@ function getValues() {
     }
 
     // Chama função para criar pessoa com os valores tratados
-    criarPessoa(nome, idade, peso, altura);
+    criarPessoa(id, nome, idade, peso, altura);
 }
 
 // Função para criar pessoa caso o formularios seja valido
-function criarPessoa(nome, idade, peso, altura) {
+function criarPessoa(id, nome, idade, peso, altura) {
     if (
         validarNome(nome) && // Valida nome
         validarIdade(idade) && // Valida idade
@@ -67,31 +76,33 @@ function criarPessoa(nome, idade, peso, altura) {
         validarAltura(altura) && // Valida altura
         !verificarCampos(nome, idade, peso, altura) // Verifica se há campos vazios
     ) {
-        const pessoa = new Pessoa(nome, idade, peso, altura);
+        const pessoa = new Pessoa(nome, idade, peso, altura, pessoas.length);
 
         // Verifica se já existe uma pessoa com o mesmo nome
         const existe = pessoas.some((p) => p.nome === pessoa.nome);
 
         // caso nao exista salva no localStorage, se nao abre um modal de erro
-        if (!existe) {
-            pessoas.push({
-                id: pessoa.id,
-                nome: pessoa.nome,
-                idade: pessoa.idade,
-                peso: pessoa.peso,
-                altura: pessoa.altura,
-                imc: pessoa.imc,
-                classificacao: pessoa.classificacao,
-            });
 
-            buildTable();
-            setData(pessoas);
-            registerModal();
+        if (id == "") {
+            if (!existe) {
+                pessoas.push(pessoa);
+                registerModal();
+            } else {
+                existente();
+                return;
+            }
         } else {
-            existente();
+            edit(pessoas[Number(id)]);
         }
 
-        console.log(pessoas);
+        buildTable();
+        setData(pessoas);
+
+        idInput.value = "";
+        nomeInput.value = "";
+        idadeInput.value = "";
+        pesoInput.value = "";
+        alturaInput.value = "";
     }
 }
 
@@ -115,7 +126,8 @@ function validarPeso(peso) {
 
 // Validação da altura: aceita formatos decimais e inteiros específicos
 function validarAltura(altura) {
-    const regex = /^(?:[1-9]\d?|[12]\d{2}|300|[0-2](?:\.\d{1,2})?|3\.0{1,2})$/;
+    const regex =
+        /^(?:([1-2]\d{2}|300)|((0\.(?:4[7-9]|[5-9]\d))|([1-2](?:[.,]\d{1,2})?)|(3[.,]0{1,2})))$/;
     return regex.test(altura);
 }
 

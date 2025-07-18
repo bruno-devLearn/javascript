@@ -1,7 +1,7 @@
-import { pessoas } from "../controllers/database.js";
-
 // Classe que representa uma pessoa e calcula seu IMC e classificação
 export default class Pessoa {
+    static ultimoId = 0; // Adiciona um contador estático
+
     // Propriedades privadas
     #id;
     #nome;
@@ -12,8 +12,8 @@ export default class Pessoa {
     #classificacao;
 
     // Construtor inicializa os atributos e calcula IMC e classificação
-    constructor(nome, idade, peso, altura) {
-        this.#id = pessoas.length;
+    constructor(nome, idade, peso, altura, id) {
+        this.#id = id; // Recebe o id passado
         this.#nome = nome;
         this.#idade = idade;
         this.#peso = peso;
@@ -74,6 +74,10 @@ export default class Pessoa {
     }
 
     // Setters para modificar os atributos privados
+    set id(novoId) {
+        this.#id = novoId;
+    }
+
     set nome(novoNome) {
         this.#nome = novoNome;
     }

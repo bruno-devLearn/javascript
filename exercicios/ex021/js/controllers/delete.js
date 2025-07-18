@@ -19,7 +19,7 @@ function deleteData(event) {
         let id = idInput.value;
 
         // Validação do id
-        if (id == "" || id == null || id == NaN || id == undefined) {
+        if (id == "" || id == null || isNaN(id) || id == undefined) {
             idInput.value = 0;
             id = 0;
         }
@@ -51,9 +51,6 @@ function deleteData(event) {
         if (pessoas.length === 0) {
             divData.style.display = "none";
         }
-
-        // TODO: apagar quando concluido
-        console.log(pessoas);
     }
 
     // Fecha o modal após a ação

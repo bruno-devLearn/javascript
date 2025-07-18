@@ -27,6 +27,12 @@ export function idInexistente() {
     textoModal.textContent = "Não existe nenhum cadastro com esse id";
 }
 
+export function atualizado() {
+    modalDiv.style.display = "block";
+    tituloModal.textContent = "Cadastro";
+    textoModal.textContent = "Cadastro atualizado com sucesso!";
+}
+
 const idInput = document.querySelector("#id"); // Input para o id do cadastro
 
 // Exibe o modal de confirmação para apagar um registro
